@@ -106,11 +106,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         tf_direccion = new javax.swing.JTextField();
         jd_homecandidato = new javax.swing.JDialog();
         tab_principal1 = new javax.swing.JTabbedPane();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -1066,37 +1062,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
-        );
-
-        tab_principal1.addTab("Actas", jPanel8);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
-        );
-
-        tab_principal1.addTab("Buzon", jPanel9);
-
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
+            .addGap(0, 818, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1104,32 +1074,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         );
 
         tab_principal1.addTab("Publicaciones", jPanel10);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
-        );
-
-        tab_principal1.addTab("Candidatos", jPanel11);
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 809, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 564, Short.MAX_VALUE)
-        );
-
-        tab_principal1.addTab("Usuario Comun", jPanel12);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel28.setText("Fecha de Nacimento");
@@ -1173,7 +1117,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(95, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1306,18 +1250,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_registrarse2ActionPerformed
 
-    private void tab_principal1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal1StateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tab_principal1StateChanged
-
-    private void boton_registrarse3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_registrarse3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_registrarse3ActionPerformed
-
-    private void boton_registrarse3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarse3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boton_registrarse3MouseClicked
-
     private void tabla_modificar_correoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_modificar_correoMouseReleased
 
     }//GEN-LAST:event_tabla_modificar_correoMouseReleased
@@ -1392,6 +1324,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_loginActionPerformed
+
+    private void tab_principal1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab_principal1StateChanged
+
+    private void boton_registrarse3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_registrarse3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_registrarse3ActionPerformed
+
+    private void boton_registrarse3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarse3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boton_registrarse3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -1493,8 +1437,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
@@ -1507,8 +1449,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
