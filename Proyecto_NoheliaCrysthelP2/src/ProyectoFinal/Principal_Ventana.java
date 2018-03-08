@@ -1,5 +1,12 @@
 package ProyectoFinal;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 public class Principal_Ventana extends javax.swing.JFrame {
 
     public Principal_Ventana() {
@@ -84,7 +91,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
         tf_usuario_signup = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         rb_f = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        dt_fecha = new com.toedter.calendar.JDateChooser();
+        rb_candidato = new javax.swing.JRadioButton();
+        rb_comun = new javax.swing.JRadioButton();
+        jl_direccion = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        tf_correo = new javax.swing.JTextField();
+        t_direccion = new javax.swing.JTextField();
         jd_modificarPerfil = new javax.swing.JDialog();
         jLabel18 = new javax.swing.JLabel();
         rb_f1 = new javax.swing.JRadioButton();
@@ -117,11 +131,16 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         boton_registrarse3 = new javax.swing.JButton();
         jLabel35 = new javax.swing.JLabel();
+        jd_escoger = new javax.swing.JDialog();
+        jLabel2 = new javax.swing.JLabel();
+        btn_sucomun = new javax.swing.JButton();
+        btn_sucandidato = new javax.swing.JButton();
+        bg_tipoUser = new javax.swing.ButtonGroup();
+        bg_genero = new javax.swing.ButtonGroup();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jm_signup = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        Home = new javax.swing.JMenuItem();
+        jmi_registrarse = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         tab_principal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -769,6 +788,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
+        bg_genero.add(rb_m);
         rb_m.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rb_m.setText("M");
 
@@ -817,8 +837,38 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Nombre");
 
+        bg_genero.add(rb_f);
         rb_f.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rb_f.setText("F");
+
+        bg_tipoUser.add(rb_candidato);
+        rb_candidato.setText("Candidato");
+        rb_candidato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_candidatoActionPerformed(evt);
+            }
+        });
+
+        bg_tipoUser.add(rb_comun);
+        rb_comun.setText("Comun");
+        rb_comun.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rb_comunMouseClicked(evt);
+            }
+        });
+
+        jl_direccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jl_direccion.setText("Direccion");
+
+        jLabel44.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel44.setText("Tipo de Usuario");
+
+        jLabel43.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel43.setText("Correo");
+
+        tf_correo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        t_direccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jd_signupLayout = new javax.swing.GroupLayout(jd_signup.getContentPane());
         jd_signup.getContentPane().setLayout(jd_signupLayout);
@@ -826,30 +876,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
             jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_signupLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(boton_registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rb_comun)
+                    .addComponent(boton_registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42))
             .addGroup(jd_signupLayout.createSequentialGroup()
-                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jd_signupLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11)
-                            .addGroup(jd_signupLayout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel9)))
-                        .addGap(51, 51, 51)
-                        .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_signupLayout.createSequentialGroup()
-                                .addComponent(rb_m)
-                                .addGap(42, 42, 42)
-                                .addComponent(rb_f))
-                            .addGroup(jd_signupLayout.createSequentialGroup()
-                                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ps_contraseña_signup, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                                    .addComponent(tf_usuario_signup, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12))))
+                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_signupLayout.createSequentialGroup()
                         .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_signupLayout.createSequentialGroup()
@@ -862,12 +894,46 @@ public class Principal_Ventana extends javax.swing.JFrame {
                                 .addComponent(jLabel8)))
                         .addGap(22, 22, 22)
                         .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rb_candidato)
                             .addComponent(jLabel6)
                             .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(tf_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                                 .addComponent(tf_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                                .addComponent(dt_fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jd_signupLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jl_direccion)
+                            .addGroup(jd_signupLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel43))))
+                        .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_signupLayout.createSequentialGroup()
+                                .addGap(88, 88, 88)
+                                .addComponent(rb_m)
+                                .addGap(42, 42, 42)
+                                .addComponent(rb_f))
+                            .addGroup(jd_signupLayout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(ps_contraseña_signup, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                    .addComponent(tf_usuario_signup)
+                                    .addComponent(tf_correo))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel12))
+                            .addGroup(jd_signupLayout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(t_direccion)))))
+                .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jd_signupLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jLabel44)
+                    .addContainerGap(394, Short.MAX_VALUE)))
         );
         jd_signupLayout.setVerticalGroup(
             jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -885,25 +951,45 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel8)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rb_m)
                         .addComponent(rb_f)))
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
                     .addComponent(tf_usuario_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(19, 19, 19)
+                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel43)
+                    .addComponent(tf_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(ps_contraseña_signup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(boton_registrarse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
+                .addGap(45, 45, 45)
+                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rb_candidato)
+                    .addComponent(rb_comun))
+                .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_signupLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jl_direccion))
+                    .addGroup(jd_signupLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(t_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13)
+                .addComponent(boton_registrarse)
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(jd_signupLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_signupLayout.createSequentialGroup()
+                    .addContainerGap(528, Short.MAX_VALUE)
+                    .addComponent(jLabel44)
+                    .addGap(101, 101, 101)))
         );
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -1188,20 +1274,70 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel2.setText("Que tipo de usuario desea registrarse?");
+
+        btn_sucomun.setText("Común");
+        btn_sucomun.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_sucomunMouseClicked(evt);
+            }
+        });
+
+        btn_sucandidato.setText("Candidato");
+
+        javax.swing.GroupLayout jd_escogerLayout = new javax.swing.GroupLayout(jd_escoger.getContentPane());
+        jd_escoger.getContentPane().setLayout(jd_escogerLayout);
+        jd_escogerLayout.setHorizontalGroup(
+            jd_escogerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_escogerLayout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_escogerLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(btn_sucomun)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(btn_sucandidato)
+                .addGap(90, 90, 90))
+        );
+        jd_escogerLayout.setVerticalGroup(
+            jd_escogerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_escogerLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel2)
+                .addGap(29, 29, 29)
+                .addGroup(jd_escogerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_sucomun)
+                    .addComponent(btn_sucandidato))
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Abrir");
+        jm_signup.setText("Abrir");
 
         jMenuItem1.setText("Login");
-        jMenu1.add(jMenuItem1);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jm_signup.add(jMenuItem1);
 
-        jMenuItem2.setText("SignUp");
-        jMenu1.add(jMenuItem2);
+        jmi_registrarse.setText("SignUp");
+        jmi_registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmi_registrarseMouseClicked(evt);
+            }
+        });
+        jmi_registrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_registrarseActionPerformed(evt);
+            }
+        });
+        jm_signup.add(jmi_registrarse);
 
-        Home.setText("Home");
-        jMenu1.add(Home);
-
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jm_signup);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -1227,11 +1363,64 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tab_principalStateChanged
 
     private void boton_registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarseMouseClicked
+        // sign up
+        try {
+            nombre = tf_nombre.getText();
+            apellido = tf_apellido.getText();
+            fecha = dt_fecha.getDate();
 
+            //Date fecha = df.parse(dt_fecha.getDateFormatString());
+            //System.out.println(fecha.getYear());
+            if (rb_m.isSelected()) {
+                sexo = "Masculino";
+            }
+            if (rb_f.isSelected()) {
+                sexo = "Femenino";
+            }
+            usuario = tf_usuario_signup.getText();
+            password = ps_contraseña_signup.getText();
+            direccion = t_direccion.getText();
+
+            if (rb_candidato.isSelected()) {
+                UsuarioCandidato uca = new UsuarioCandidato(nombre, apellido, fecha, sexo, usuario, password, correo);
+                lista.agregarAlFinal(uca);
+            }
+            if (rb_comun.isSelected()) {
+                UsuarioComun uc = new UsuarioComun(direccion, nombre, apellido, fecha, sexo, usuario, password, correo);
+                lista.agregarAlFinal(uc);
+            }
+
+            // usuarios.add(new Usuario(nombre, apellido, fecha, sexo, usuario, password));
+
+            /*au = new adminUsuario("./usuario.cbm");
+            au.CargarArchivo();
+            au.setUsuario(us);
+            au.EscribirArchivo();
+            //para que no me suscriba los usuarios
+            Guardar(usuarios);*/
+            JOptionPane.showMessageDialog(this, "Se registró exitosamente");
+
+            tf_nombre.setText("");
+            tf_apellido.setText("");
+            rb_m.setSelected(true);
+            rb_f.setSelected(false);
+            tf_usuario_signup.setText("");
+            ps_contraseña_signup.setText("");
+            rb_candidato.setSelected(true);
+            rb_comun.setSelected(false);
+            tf_correo.setText("");
+            t_direccion.setText("");
+            lista.listar();
+            this.jd_signup.setVisible(false);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_boton_registrarseMouseClicked
 
     private void boton_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_registrarseActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_boton_registrarseActionPerformed
 
     private void boton_registrarse1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarse1MouseClicked
@@ -1318,6 +1507,53 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void boton_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_loginMouseClicked
 
+        try {
+            for (int i = 0; i < lista.getTamanio(); i++) {
+                if (lista.getValor(i) instanceof UsuarioCandidato) {
+                    if (this.tf_usuario_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getUsuario()) && this.ps_password_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getContraseña())) {
+                        JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
+                                + "\n Ingrese a Home en Menu :)");
+                        
+                        this.jd_login.setEnabled(false);
+                        this.jd_login.setVisible(false);
+                        this.jd_homecandidato.setModal(true);
+                        this.jd_homecandidato.pack();
+                        this.jd_homecandidato.setLocationRelativeTo(this);
+                        this.jd_homecandidato.setVisible(true);
+                        this.jd_homecandidato.setEnabled(true);
+                        //this.menu_logout.setEnabled(true);
+
+                        tf_usuario_login.setText("");
+                        ps_password_login.setText("");
+
+                        break;
+                    }
+
+                } else if (lista.getValor(i) instanceof UsuarioComun) {
+                    if (this.tf_usuario_login.getText().equals(((UsuarioComun) lista.getValor(i)).getUsuario()) && this.ps_password_login.getText().equals(((UsuarioComun) lista.getValor(i)).getContraseña())) {
+                        JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
+                                + "\n Ingrese a Home en Menu :)");
+                        
+                        this.jd_login.setEnabled(false);
+                        this.jd_login.setVisible(false);
+                        this.jd_homecomun.setModal(true);
+                        this.jd_homecomun.pack();
+                        this.jd_homecomun.setLocationRelativeTo(this);
+                        this.jd_homecomun.setVisible(true);
+                        this.jd_homecandidato.setEnabled(true);
+                        //this.menu_logout.setEnabled(true);
+
+                        tf_usuario_login.setText("");
+                        ps_password_login.setText("");
+
+                        break;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Principal_Ventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
 
     }//GEN-LAST:event_boton_loginMouseClicked
 
@@ -1336,6 +1572,44 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void boton_registrarse3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarse3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_registrarse3MouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.jd_login.setModal(true);
+        this.jd_login.pack();
+        this.jd_login.setLocationRelativeTo(this);
+        this.jd_login.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmi_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrarseActionPerformed
+        // TODO add your handling code here:
+        this.jd_signup.setModal(true);
+        this.jd_signup.pack();
+        this.jd_signup.setLocationRelativeTo(this);
+        this.jd_signup.setVisible(true);
+        rb_candidato.setSelected(true);
+
+    }//GEN-LAST:event_jmi_registrarseActionPerformed
+
+    private void jmi_registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_registrarseMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_registrarseMouseClicked
+
+    private void btn_sucomunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_sucomunMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_btn_sucomunMouseClicked
+
+    private void rb_candidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_candidatoActionPerformed
+        // TODO add your handling code here:
+        this.jl_direccion.setVisible(false);
+        this.t_direccion.setVisible(false);
+    }//GEN-LAST:event_rb_candidatoActionPerformed
+
+    private void rb_comunMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rb_comunMouseClicked
+        // TODO add your handling code here:
+        this.jl_direccion.setVisible(true);
+        this.t_direccion.setVisible(true);
+    }//GEN-LAST:event_rb_comunMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1373,7 +1647,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Home;
+    private javax.swing.ButtonGroup bg_genero;
+    private javax.swing.ButtonGroup bg_tipoUser;
     private javax.swing.JButton bold;
     private javax.swing.JToggleButton boton_guardar_tarea;
     private javax.swing.JButton boton_italic;
@@ -1382,12 +1657,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JButton boton_registrarse1;
     private javax.swing.JButton boton_registrarse2;
     private javax.swing.JButton boton_registrarse3;
+    private javax.swing.JButton btn_sucandidato;
+    private javax.swing.JButton btn_sucomun;
     private com.toedter.calendar.JCalendar calendar;
     private javax.swing.JComboBox<String> cb_opcion_correo;
     private javax.swing.JComboBox<String> cb_paramensaje;
+    private com.toedter.calendar.JDateChooser dt_fecha;
     private javax.swing.JEditorPane editorpane;
     private javax.swing.JButton enviar_send;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1400,6 +1677,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1425,16 +1703,16 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel13;
@@ -1455,19 +1733,26 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JDialog jd_escoger;
     private javax.swing.JDialog jd_homecandidato;
     private javax.swing.JDialog jd_homecomun;
     private javax.swing.JDialog jd_login;
     private javax.swing.JDialog jd_modificarPerfil;
     private javax.swing.JDialog jd_signup;
+    private javax.swing.JLabel jl_direccion;
+    private javax.swing.JMenu jm_signup;
+    private javax.swing.JMenuItem jmi_registrarse;
     private javax.swing.JLabel lbl_mail;
     private javax.swing.JPasswordField ps_contraseña_signup;
     private javax.swing.JPasswordField ps_contraseña_signup1;
     private javax.swing.JPasswordField ps_password_login;
+    private javax.swing.JRadioButton rb_candidato;
+    private javax.swing.JRadioButton rb_comun;
     private javax.swing.JRadioButton rb_f;
     private javax.swing.JRadioButton rb_f1;
     private javax.swing.JRadioButton rb_m;
     private javax.swing.JRadioButton rb_m1;
+    private javax.swing.JTextField t_direccion;
     private javax.swing.JTabbedPane tab_principal;
     private javax.swing.JTabbedPane tab_principal1;
     private javax.swing.JTabbedPane tab_principal2;
@@ -1480,6 +1765,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_apellido1;
     private javax.swing.JTextField tf_asunto_send;
+    private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_direccion;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
@@ -1487,4 +1773,16 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField tf_usuario_signup;
     private javax.swing.JTextField tf_usuario_signup1;
     // End of variables declaration//GEN-END:variables
+    Lista lista = new Lista();
+    String nombre;
+    String apellido;
+    Date fecha;
+    String sexo;
+    String usuario;
+    String password, direccion, correo;
+    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+
+    Usuario us = new Usuario();
+    //adminUsuario au;
+    //Mensaje correo = new Mensaje();
 }
