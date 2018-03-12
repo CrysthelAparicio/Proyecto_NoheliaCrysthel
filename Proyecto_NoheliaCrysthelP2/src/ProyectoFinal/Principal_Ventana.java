@@ -20,13 +20,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Red Elecciones");
 
-        setIconImage(new ImageIcon(getClass().getResource("/imagenes/red.png")).getImage());
+        /*setIconImage(new ImageIcon(getClass().getResource("./imagenes/red.png")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("/imagenes/fondo.jpg"));
+        ImageIcon uno = new ImageIcon(this.getClass().getResource("./imagenes/fondo.jpg"));
         JLabel fondo = new JLabel();
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
-        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());
+        fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());*/
     }
 
     @SuppressWarnings("unchecked")
@@ -892,9 +892,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel16)
                 .addGap(41, 41, 41)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lbNombrePerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbNombrePerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbApellidoPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -904,9 +905,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addComponent(jLabel20)
                     .addComponent(lbDireccionPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(lbFechaPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbFechaPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel13)))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14)
@@ -1820,6 +1822,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             usuario = tf_usuario_signup.getText();
             password = ps_contraseña_signup.getText();
             direccion = t_direccion.getText();
+            correo = tf_correo.getText();
 
             if (rb_candidato.isSelected()) {
                 UsuarioCandidato uca = new UsuarioCandidato(nombre, apellido, fecha, sexo, usuario, password, correo);
@@ -1944,7 +1947,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     if (this.tf_usuario_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getUsuario()) && this.ps_password_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getContraseña())) {
                         JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
                                 + "\n Bienvenido(a) al Home Menu :)");
-
+                        
+                        usuario_loggeadoC = (UsuarioCandidato) lista.getValor(i);
                         this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
                         this.jd_homecandidato.setModal(true);
@@ -1956,9 +1960,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
                         tf_usuario_login.setText("");
                         ps_password_login.setText("");
-
+                        
+                        System.out.println(usuario_loggeadoC.getNombre());
                         nombre = ((UsuarioCandidato) lista.getValor(i)).getNombre();
-                        usuario_loggeadoC = (UsuarioCandidato) lista.getValor(i);
                         apellido = ((UsuarioCandidato) lista.getValor(i)).getApelido();
                         fecha = ((UsuarioCandidato) lista.getValor(i)).getFecha_nacimiento();
                         sexo = ((UsuarioCandidato) lista.getValor(i)).getSexo();
