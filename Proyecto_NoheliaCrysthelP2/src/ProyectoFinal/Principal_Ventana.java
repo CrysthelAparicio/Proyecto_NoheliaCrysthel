@@ -286,6 +286,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 cb_opcion_correoItemStateChanged(evt);
             }
         });
+        cb_opcion_correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_opcion_correoActionPerformed(evt);
+            }
+        });
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -894,8 +899,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbNombrePerfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)))
+                    .addComponent(jLabel4))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbApellidoPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -907,8 +911,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbFechaPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)))
+                    .addComponent(jLabel13))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel14)
@@ -1877,7 +1880,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_modificar_correoMouseReleased
 
     private void cb_opcion_correoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_opcion_correoItemStateChanged
-
+        
     }//GEN-LAST:event_cb_opcion_correoItemStateChanged
 
     private void tabla1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseReleased
@@ -2134,6 +2137,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void tf_correoCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_correoCandidatoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_correoCandidatoActionPerformed
+
+    private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcion_correoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_opcion_correoActionPerformed
 
     /**
      * @param args the command line arguments
