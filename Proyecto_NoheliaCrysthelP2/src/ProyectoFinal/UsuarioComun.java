@@ -50,6 +50,31 @@ public class UsuarioComun extends Usuario {
         
     }
 
+    public Lista getListaAmigos() {
+        return listaAmigos;
+    }
+
+    public void setListaAmigos(Lista listaAmigos) {
+        this.listaAmigos = listaAmigos;
+    }
+
+    public Lista getListaCorreos() {
+        return listaCorreos;
+    }
+
+    public void setListaCorreos(Lista listaCorreos) {
+        this.listaCorreos = listaCorreos;
+    }
+
+    public Lista getListaCandidatos() {
+        return listaCandidatos;
+    }
+
+    public void setListaCandidatos(Lista listaCandidatos) {
+        this.listaCandidatos = listaCandidatos;
+    }
+    
+
     public String getDireccion() {
         return direccion;
     }

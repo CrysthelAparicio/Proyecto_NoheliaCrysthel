@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 public class Principal_Ventana extends javax.swing.JFrame {
 
@@ -31,7 +32,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());*/
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,14 +81,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         ta_PubliCandidatos = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        ta_ListaCandidatos = new javax.swing.JTextArea();
-        cb_ListaCandidatos = new javax.swing.JComboBox<>();
         jLabel46 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jl_candidatos = new javax.swing.JList<>();
+        btn_cargarCandidatos = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jl_usuariosComunes = new javax.swing.JList<>();
+        btn_cargarU = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -209,6 +211,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
         tf_usuarioCandidadto = new javax.swing.JTextField();
         jLabel59 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
+        menu_popA = new javax.swing.JPopupMenu();
+        jmi_agregar = new javax.swing.JMenuItem();
+        menu_popE = new javax.swing.JPopupMenu();
+        jmi_eliminar = new javax.swing.JMenuItem();
+        menu_popAC = new javax.swing.JPopupMenu();
+        jmi_agregarC = new javax.swing.JMenuItem();
+        menu_popEC = new javax.swing.JPopupMenu();
+        jmi_eliminarC = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jt_abrir = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -228,7 +238,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 908, Short.MAX_VALUE)
+            .addGap(0, 848, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -694,7 +704,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(234, 234, 234)
                         .addComponent(cb_LPubliCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -710,33 +720,36 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
         tab_principal.addTab("Publicaciones", jPanel2);
 
-        ta_ListaCandidatos.setColumns(20);
-        ta_ListaCandidatos.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
-        ta_ListaCandidatos.setRows(5);
-        jScrollPane8.setViewportView(ta_ListaCandidatos);
-
-        cb_ListaCandidatos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         jLabel46.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel46.setText("Candidatos Presidenciales");
+
+        jl_candidatos.setModel(new DefaultListModel());
+        jl_candidatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_candidatosMouseClicked(evt);
+            }
+        });
+        jScrollPane10.setViewportView(jl_candidatos);
+
+        btn_cargarCandidatos.setText("Cargar Candidatos");
+        btn_cargarCandidatos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cargarCandidatosMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel46))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(cb_ListaCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addGap(123, 123, 123)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel46))
+                .addGap(46, 46, 46)
+                .addComponent(btn_cargarCandidatos)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -744,45 +757,64 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(cb_ListaCandidatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cargarCandidatos))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         tab_principal.addTab("Candidatos", jPanel3);
 
         jLabel45.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel45.setText("Lista de Amigos");
+        jLabel45.setText("Conoce gente como tu");
 
         jl_usuariosComunes.setModel(new DefaultListModel());
-        jScrollPane10.setViewportView(jl_usuariosComunes);
+        jl_usuariosComunes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_usuariosComunesMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jl_usuariosComunes);
+
+        btn_cargarU.setText("Cargar Usuarios");
+        btn_cargarU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cargarUMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(276, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel45)
-                        .addGap(276, 276, 276))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(172, 172, 172))))
+                        .addComponent(jLabel45)
+                        .addGap(121, 121, 121)))
+                .addComponent(btn_cargarU)
+                .addGap(36, 36, 36))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel45)
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(btn_cargarU)))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
-        tab_principal.addTab("Usuario Comun", jPanel7);
+        tab_principal.addTab("Usuarios", jPanel7);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel13.setText("Fecha de Nacimento:");
@@ -880,7 +912,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(346, 346, 346)
                         .addComponent(bt_modificarPerfil)))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1578,6 +1610,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         );
 
         poAgregar.setText("jMenuItem2");
+        poAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                poAgregarMouseClicked(evt);
+            }
+        });
         ListaAmigos.add(poAgregar);
 
         porEliminar.setText("jMenuItem3");
@@ -1748,6 +1785,54 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGap(33, 33, 33))
         );
 
+        menu_popA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                menu_popAPropertyChange(evt);
+            }
+        });
+
+        jmi_agregar.setText("Agregar");
+        jmi_agregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmi_agregarMouseClicked(evt);
+            }
+        });
+        jmi_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregarActionPerformed(evt);
+            }
+        });
+        menu_popA.add(jmi_agregar);
+
+        jmi_eliminar.setText("Eliminar");
+        jmi_eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmi_eliminarMouseClicked(evt);
+            }
+        });
+        jmi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarActionPerformed(evt);
+            }
+        });
+        menu_popE.add(jmi_eliminar);
+
+        jmi_agregarC.setText("Seguir");
+        jmi_agregarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_agregarCActionPerformed(evt);
+            }
+        });
+        menu_popAC.add(jmi_agregarC);
+
+        jmi_eliminarC.setText("Dejar de Seguir");
+        jmi_eliminarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_eliminarCActionPerformed(evt);
+            }
+        });
+        menu_popEC.add(jmi_eliminarC);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jt_abrir.setText("Abrir");
@@ -1823,19 +1908,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tab_principalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principalStateChanged
-        
-        DefaultListModel modelo = (DefaultListModel) jl_usuariosComunes.getModel();
-        if (tab_principal.getSelectedIndex() == 4) {
-            for (int i = 0; i < lista.getTamanio(); i++) {
-                try {
-                    modelo.addElement(lista.getValor(i));
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                    Logger.getLogger(Principal_Ventana.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-           
-        }
+
+
     }//GEN-LAST:event_tab_principalStateChanged
 
     private void boton_registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarseMouseClicked
@@ -1915,7 +1989,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
             usuario = tf_usuario1.getText();
             password = ps_contraseña1.getText();
-            
+
             usuario_loggeado.setDireccion(direccion);
             usuario_loggeado.setNombre(nombre);
             usuario_loggeado.setApelido(apellido);
@@ -1923,13 +1997,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
             usuario_loggeado.setCorreo(correo);
             usuario_loggeado.setSexo(sexo);
             usuario_loggeado.setUsuario(usuario);
-            usuario_loggeado.setContraseña(password); 
-            
-            int u=lista.getPosicion(usuario_loggeado);
+            usuario_loggeado.setContraseña(password);
+
+            int u = lista.getPosicion(usuario_loggeado);
             lista.editarPorPosicion(u, usuario_loggeado);
-            
+
             lista.listar();
-            
+
             //  F A L T A
             tf_direccion.setText("");
             tf_nombre1.setText("");
@@ -1957,6 +2031,39 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_modificar_correoMouseReleased
 
     private void cb_opcion_correoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_opcion_correoItemStateChanged
+        try {
+            if (evt.getStateChange() >= 2) {
+                if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
+                    DefaultTableModel modelo = new DefaultTableModel();
+                    modelo.addColumn("Receptor");
+                    modelo.addColumn("Emisor");
+                    modelo.addColumn("AsUnto");
+                    modelo.addColumn("Fecha");
+                    for (int i = 0; i < usuario_loggeado.getListaCorreos().getTamanio(); i++) {
+                        Mensaje m = (Mensaje) usuario_loggeado.getListaCorreos().getValor(i);
+                        Object[] newrow = {
+                            m.getReceptor(), m.getEmisor(), m.getAsunto(), m.getFecha()
+
+                        };
+                        modelo.addRow(newrow);
+
+                    }
+                    tabla1.setModel(modelo);
+
+                }
+            }
+
+            if (cb_opcion_correo.getSelectedItem().toString().equals("Correos Enviados")) {
+
+                DefaultTableModel modelo = new DefaultTableModel();
+                modelo.addColumn("Receptor");
+                modelo.addColumn("Emisor");
+                modelo.addColumn("Asunto");
+                modelo.addColumn("Fecha");
+
+            }
+        } catch (Exception e) {
+        }
 
     }//GEN-LAST:event_cb_opcion_correoItemStateChanged
 
@@ -2026,7 +2133,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     if (this.tf_usuario_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getUsuario()) && this.ps_password_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getContraseña())) {
                         JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
                                 + "\n Bienvenido(a) al Home Menu :)");
-                        
+
                         usuario_loggeadoC = (UsuarioCandidato) lista.getValor(i);
                         this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
@@ -2039,7 +2146,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
                         tf_usuario_login.setText("");
                         ps_password_login.setText("");
-                        
+
                         System.out.println(usuario_loggeadoC.getNombre());
                         nombre = ((UsuarioCandidato) lista.getValor(i)).getNombre();
                         apellido = ((UsuarioCandidato) lista.getValor(i)).getApelido();
@@ -2124,7 +2231,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         this.jd_modifcarCandidato.pack();
         this.jd_modifcarCandidato.setLocationRelativeTo(this);
         this.jd_modifcarCandidato.setVisible(true);
-        
+
     }//GEN-LAST:event_boton_modificarCPActionPerformed
 
     private void boton_modificarCPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_modificarCPMouseClicked
@@ -2184,22 +2291,21 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
             usuario = tf_usuarioCandidadto.getText();
             password = ps_contraseñaCandidato.getText();
-            
+
             usuario_loggeadoC.setNombre(nombre);
             usuario_loggeadoC.setApelido(apellido);
             usuario_loggeadoC.setFecha_nacimiento(fecha);
             usuario_loggeadoC.setCorreo(correo);
             usuario_loggeadoC.setSexo(sexo);
             usuario_loggeadoC.setUsuario(usuario);
-            usuario_loggeadoC.setContraseña(password); 
-            
-            int u=lista.getPosicion(usuario_loggeadoC);
-            lista.editarPorPosicion(u, usuario_loggeadoC);
-            
-            lista.listar();
-            
-            //  F A L T A
+            usuario_loggeadoC.setContraseña(password);
 
+            int u = lista.getPosicion(usuario_loggeadoC);
+            lista.editarPorPosicion(u, usuario_loggeadoC);
+
+            lista.listar();
+
+            //  F A L T A
             tf_nombreCandidato.setText("");
             tf_apellidoCandidato.setText("");
             dtFechaCandidato.setDate(new Date());
@@ -2245,14 +2351,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tf_correoCandidatoActionPerformed
 
     private void jt_abrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_abrirMouseClicked
-        
-        
+
+
     }//GEN-LAST:event_jt_abrirMouseClicked
 
     private void jt_abrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_abrirActionPerformed
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_jt_abrirActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
@@ -2261,18 +2367,130 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void jmi_cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_cerrarSesionMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jmi_cerrarSesionMouseClicked
 
     private void jmi_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_cerrarSesionActionPerformed
         // TODO add your handling code here:
-        usuario_loggeado= null;
+        usuario_loggeado = null;
         usuario_loggeadoC = null;
         JOptionPane.showMessageDialog(this, "Usted ha cerrado Sesion, bai");
         jd_login.setEnabled(true);
         jd_signup.setEnabled(true);
         jmi_cerrarSesion.setVisible(false);
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
+
+    private void btn_cargarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarUMouseClicked
+        // TODO add your handling code here:
+        try {
+
+            DefaultListModel modelo = (DefaultListModel) jl_usuariosComunes.getModel();
+            for (int i = 0; i < lista.getTamanio(); i++) {
+                if (lista.getValor(i) instanceof UsuarioComun) {
+                    if (lista.getValor(i).equals(usuario_loggeado)) {
+
+                    } else {
+                        modelo.addElement(lista.getValor(i));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_cargarUMouseClicked
+
+    private void poAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_poAgregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_poAgregarMouseClicked
+
+    private void jl_usuariosComunesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_usuariosComunesMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            int row = jl_usuariosComunes.getSelectedIndex();
+            if (row >= 0) {
+                DefaultListModel modelo = (DefaultListModel) jl_usuariosComunes.getModel();
+                Usuario u = (Usuario) modelo.getElementAt(jl_usuariosComunes.getSelectedIndex());
+                usuario_seleccionado = (UsuarioComun) u;
+                if (usuario_loggeado.getListaAmigos().buscar(u)) {
+                    menu_popE.show(evt.getComponent(), evt.getX(), evt.getY());
+                } else {
+                    menu_popA.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jl_usuariosComunesMouseClicked
+
+    private void menu_popAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_menu_popAPropertyChange
+
+    }//GEN-LAST:event_menu_popAPropertyChange
+
+    private void jmi_agregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_agregarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_agregarMouseClicked
+
+    private void jmi_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_eliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_eliminarMouseClicked
+
+    private void jmi_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarActionPerformed
+        // TODO add your handling code here:
+        usuario_loggeado.agregarAmigo(usuario_seleccionado);
+        usuario_loggeado.getListaAmigos().listar();
+    }//GEN-LAST:event_jmi_agregarActionPerformed
+
+    private void jmi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarActionPerformed
+        // TODO add your handling code here:
+        usuario_loggeado.eliminarAmigo(usuario_seleccionado);
+        usuario_loggeado.getListaAmigos().listar();
+    }//GEN-LAST:event_jmi_eliminarActionPerformed
+
+    private void btn_cargarCandidatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarCandidatosMouseClicked
+        // TODO add your handling code here:
+        try {
+
+            DefaultListModel modelo = (DefaultListModel) jl_candidatos.getModel();
+            for (int i = 0; i < lista.getTamanio(); i++) {
+                if (lista.getValor(i) instanceof UsuarioCandidato) {
+                    modelo.addElement(lista.getValor(i));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btn_cargarCandidatosMouseClicked
+
+    private void jmi_agregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarCActionPerformed
+        // TODO add your handling code here:
+        usuario_loggeado.agregarCandidato(candidato_seleccionado);
+        usuario_loggeado.getListaCandidatos().listar();
+    }//GEN-LAST:event_jmi_agregarCActionPerformed
+
+    private void jl_candidatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_candidatosMouseClicked
+        // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            int row = jl_candidatos.getSelectedIndex();
+            if (row >= 0) {
+                DefaultListModel modelo = (DefaultListModel) jl_candidatos.getModel();
+                Usuario u = (Usuario) modelo.getElementAt(jl_candidatos.getSelectedIndex());
+                candidato_seleccionado = (UsuarioCandidato) u;
+                if (usuario_loggeado.getListaCandidatos().buscar(u)) {
+                    menu_popEC.show(evt.getComponent(), evt.getX(), evt.getY());
+                } else {
+                    menu_popAC.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jl_candidatosMouseClicked
+
+    private void jmi_eliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarCActionPerformed
+        // TODO add your handling code here:
+        usuario_loggeado.eliminarCandidato(candidato_seleccionado);
+        usuario_loggeado.getListaCandidatos().listar();
+    }//GEN-LAST:event_jmi_eliminarCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2305,8 +2523,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal_Ventana().setVisible(true);
-               
-                
+
             }
         });
     }
@@ -2325,11 +2542,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JButton boton_modificarCP;
     private javax.swing.JButton boton_registrarse;
     private javax.swing.JButton bt_modificarPerfil;
+    private javax.swing.JButton btn_cargarCandidatos;
+    private javax.swing.JButton btn_cargarU;
     private javax.swing.JButton btn_sucandidato;
     private javax.swing.JButton btn_sucomun;
     private com.toedter.calendar.JCalendar calendar;
     private javax.swing.JComboBox<String> cb_LPubliCandidatos;
-    private javax.swing.JComboBox<String> cb_ListaCandidatos;
     private javax.swing.JComboBox<String> cb_opcion_correo;
     private javax.swing.JComboBox<String> cb_paramensaje;
     private com.toedter.calendar.JDateChooser dtFechaCandidato;
@@ -2413,12 +2631,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_escoger;
@@ -2428,9 +2646,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JDialog jd_modifcarCandidato;
     private javax.swing.JDialog jd_modificarPerfil;
     private javax.swing.JDialog jd_signup;
+    private javax.swing.JList<String> jl_candidatos;
     private javax.swing.JLabel jl_direccion;
     private javax.swing.JList<String> jl_usuariosComunes;
+    private javax.swing.JMenuItem jmi_agregar;
+    private javax.swing.JMenuItem jmi_agregarC;
     private javax.swing.JMenuItem jmi_cerrarSesion;
+    private javax.swing.JMenuItem jmi_eliminar;
+    private javax.swing.JMenuItem jmi_eliminarC;
     private javax.swing.JMenuItem jmi_registrarse;
     private javax.swing.JMenu jt_abrir;
     private javax.swing.JLabel lbApellidoPerfil;
@@ -2448,6 +2671,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel lbUsuarioPerfil;
     private javax.swing.JLabel lbUsuarioPerfil1;
     private javax.swing.JLabel lbl_mail;
+    private javax.swing.JPopupMenu menu_popA;
+    private javax.swing.JPopupMenu menu_popAC;
+    private javax.swing.JPopupMenu menu_popE;
+    private javax.swing.JPopupMenu menu_popEC;
     private javax.swing.JMenuItem poAgregar;
     private javax.swing.JMenuItem poEliminar;
     private javax.swing.JMenuItem poSeguir;
@@ -2465,7 +2692,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_m1;
     private javax.swing.JRadioButton rb_m2;
     private javax.swing.JTextField t_direccion;
-    private javax.swing.JTextArea ta_ListaCandidatos;
     private javax.swing.JTextArea ta_PubliCandidatos;
     private javax.swing.JTabbedPane tab_principal;
     private javax.swing.JTabbedPane tab_principal1;
@@ -2501,8 +2727,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
     String password, direccion, correo;
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
-    UsuarioComun usuario_loggeado= null;
-    UsuarioCandidato usuario_loggeadoC= null;
+    UsuarioComun usuario_loggeado = null;
+    UsuarioCandidato usuario_loggeadoC = null;
+    UsuarioComun usuario_seleccionado = null;
+    UsuarioCandidato candidato_seleccionado = null;
     //adminUsuario au;
     //Mensaje correo = new Mensaje();
 }
