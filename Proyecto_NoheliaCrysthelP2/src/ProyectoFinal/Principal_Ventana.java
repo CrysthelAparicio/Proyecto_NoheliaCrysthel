@@ -299,6 +299,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 cb_opcion_correoItemStateChanged(evt);
             }
         });
+        cb_opcion_correo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_opcion_correoActionPerformed(evt);
+            }
+        });
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2031,6 +2036,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_tabla_modificar_correoMouseReleased
 
     private void cb_opcion_correoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_opcion_correoItemStateChanged
+
         try {
             if (evt.getStateChange() >= 2) {
                 if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
@@ -2064,6 +2070,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
+
 
     }//GEN-LAST:event_cb_opcion_correoItemStateChanged
 
@@ -2491,6 +2498,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         usuario_loggeado.eliminarCandidato(candidato_seleccionado);
         usuario_loggeado.getListaCandidatos().listar();
     }//GEN-LAST:event_jmi_eliminarCActionPerformed
+
+    private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcion_correoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_opcion_correoActionPerformed
+
 
     /**
      * @param args the command line arguments
