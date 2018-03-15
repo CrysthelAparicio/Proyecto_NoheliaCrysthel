@@ -1,5 +1,8 @@
 package ProyectoFinal;
 
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class Principal_Ventana extends javax.swing.JFrame {
@@ -42,26 +46,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         tab_principal2 = new javax.swing.JTabbedPane();
-        jPanel14 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        tabla_modificar_correo = new javax.swing.JTable();
         jPanel15 = new javax.swing.JPanel();
         jLabel36 = new javax.swing.JLabel();
         cb_opcion_correo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
-        jPanel16 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        tabla_tarea = new javax.swing.JTable();
-        calendar = new com.toedter.calendar.JCalendar();
-        tareas_dia = new javax.swing.JToggleButton();
-        boton_guardar_tarea = new javax.swing.JToggleButton();
-        jPanel17 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        tabla_admin = new javax.swing.JTable();
-        jPanel18 = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        tabla_cuentas = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         enviar_send = new javax.swing.JButton();
@@ -89,7 +78,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jLabel45 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jl_usuariosComunes = new javax.swing.JList<>();
-        btn_cargarU = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -219,9 +207,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jmi_agregarC = new javax.swing.JMenuItem();
         menu_popEC = new javax.swing.JPopupMenu();
         jmi_eliminarC = new javax.swing.JMenuItem();
+        jd_mensaje = new javax.swing.JDialog();
+        jLabel66 = new javax.swing.JLabel();
+        jLabel67 = new javax.swing.JLabel();
+        boton_send = new javax.swing.JButton();
+        asunto_send = new javax.swing.JTextField();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        editorpane_send = new javax.swing.JEditorPane();
+        menu_responder = new javax.swing.JPopupMenu();
+        Responder = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         jt_abrir = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmi_login = new javax.swing.JMenuItem();
         jmi_registrarse = new javax.swing.JMenuItem();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -255,45 +252,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
-        tabla_modificar_correo.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        tabla_modificar_correo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tabla_modificar_correoMouseReleased(evt);
-            }
-        });
-        jScrollPane4.setViewportView(tabla_modificar_correo);
-
-        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
-        jPanel14.setLayout(jPanel14Layout);
-        jPanel14Layout.setHorizontalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
-        jPanel14Layout.setVerticalGroup(
-            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
-        );
-
-        tab_principal2.addTab("Modificar Correo", jPanel14);
-
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel36.setText("Seleccione");
 
         cb_opcion_correo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cb_opcion_correo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inbox", "Correos Enviados", "Correos Leidos", "Correos no Leidos", "Correos Eliminados", "Spam" }));
+        cb_opcion_correo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inbox", "Enviados" }));
         cb_opcion_correo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_opcion_correoItemStateChanged(evt);
@@ -314,6 +277,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         ));
         tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabla1MouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tabla1MouseReleased(evt);
             }
@@ -327,14 +293,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel15Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel36)
                         .addGap(41, 41, 41)
-                        .addComponent(cb_opcion_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(cb_opcion_correo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,192 +309,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cb_opcion_correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
-                .addGap(55, 55, 55)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         tab_principal2.addTab("Correo", jPanel15);
-
-        tabla_tarea.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"7:00 AM", null, null},
-                {"8:00 AM", null, null},
-                {"9:00 AM", null, null},
-                {"10:00 AM", null, null},
-                {"11:00 AM", null, null},
-                {"12:00 PM", null, null},
-                {"1:00 PM", null, null},
-                {"2:00 PM", null, null},
-                {"3:00 PM", null, null},
-                {"4:00 PM", null, null},
-                {"5:00 PM", null, null},
-                {"6:00 PM", null, null},
-                {"7:00 PM", null, null},
-                {"8:00 PM", null, null},
-                {"9:00 PM", null, null},
-                {"10:00 PM", null, null},
-                {"11:00 PM", null, null},
-                {"12:00 AM", null, null}
-            },
-            new String [] {
-                "Hora", "Tarea", "Remind Me"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, true, true
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tabla_tarea.setRowHeight(25);
-        tabla_tarea.setRowMargin(2);
-        tabla_tarea.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentRemoved(java.awt.event.ContainerEvent evt) {
-                tabla_tareaComponentRemoved(evt);
-            }
-        });
-        jScrollPane5.setViewportView(tabla_tarea);
-
-        tareas_dia.setText("Ver Tareas de tal Dia");
-        tareas_dia.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tareas_diaMouseClicked(evt);
-            }
-        });
-        tareas_dia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tareas_diaActionPerformed(evt);
-            }
-        });
-
-        boton_guardar_tarea.setText("Guardar");
-        boton_guardar_tarea.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                boton_guardar_tareaMouseClicked(evt);
-            }
-        });
-        boton_guardar_tarea.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_guardar_tareaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
-        jPanel16.setLayout(jPanel16Layout);
-        jPanel16Layout.setHorizontalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tareas_dia)
-                    .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(boton_guardar_tarea, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(132, 132, 132))))
-        );
-        jPanel16Layout.setVerticalGroup(
-            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(tareas_dia, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(boton_guardar_tarea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(89, 89, 89))
-        );
-
-        tab_principal2.addTab("Tarea", jPanel16);
-
-        tabla_admin.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        tabla_admin.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        tabla_admin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tabla_adminMouseReleased(evt);
-            }
-        });
-        jScrollPane6.setViewportView(tabla_admin);
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
-
-        tab_principal2.addTab(" Administrar Mi cuenta", jPanel17);
-
-        tabla_cuentas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        tabla_cuentas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tabla_cuentasMouseReleased(evt);
-            }
-        });
-        jScrollPane7.setViewportView(tabla_cuentas);
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
-        );
-
-        tab_principal2.addTab("Directorio de Cuentas", jPanel18);
 
         jLabel37.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel37.setText("To:");
@@ -612,7 +398,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(tf_asunto_send, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(183, Short.MAX_VALUE))
+                        .addContainerGap(187, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(cb_paramensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -781,13 +567,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jl_usuariosComunes);
 
-        btn_cargarU.setText("Cargar Usuarios");
-        btn_cargarU.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cargarUMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -797,25 +576,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60))
+                        .addGap(205, 205, 205))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel45)
-                        .addGap(121, 121, 121)))
-                .addComponent(btn_cargarU)
-                .addGap(36, 36, 36))
+                        .addGap(266, 266, 266))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel45)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(btn_cargarU)))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(173, Short.MAX_VALUE))
         );
 
@@ -1838,6 +1610,62 @@ public class Principal_Ventana extends javax.swing.JFrame {
         });
         menu_popEC.add(jmi_eliminarC);
 
+        jLabel66.setText("Mensaje");
+
+        jLabel67.setText("Asunto");
+
+        boton_send.setText("Enviar");
+        boton_send.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                boton_sendMouseClicked(evt);
+            }
+        });
+
+        jScrollPane8.setViewportView(editorpane_send);
+
+        javax.swing.GroupLayout jd_mensajeLayout = new javax.swing.GroupLayout(jd_mensaje.getContentPane());
+        jd_mensaje.getContentPane().setLayout(jd_mensajeLayout);
+        jd_mensajeLayout.setHorizontalGroup(
+            jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mensajeLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel66)
+                    .addComponent(jLabel67))
+                .addGap(26, 26, 26)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                    .addComponent(asunto_send))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_mensajeLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(boton_send, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
+        );
+        jd_mensajeLayout.setVerticalGroup(
+            jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_mensajeLayout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel67)
+                    .addComponent(asunto_send, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jd_mensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel66)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(boton_send, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+
+        Responder.setText("Responder Mensajes");
+        Responder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResponderActionPerformed(evt);
+            }
+        });
+        menu_responder.add(Responder);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jt_abrir.setText("Abrir");
@@ -1852,13 +1680,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Login");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jmi_login.setText("Login");
+        jmi_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jmi_loginActionPerformed(evt);
             }
         });
-        jt_abrir.add(jMenuItem1);
+        jt_abrir.add(jmi_login);
 
         jmi_registrarse.setText("SignUp");
         jmi_registrarse.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1913,7 +1741,26 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tab_principalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principalStateChanged
+        if (tab_principal.getSelectedIndex() == 4) {
 
+            try {
+                DefaultListModel modelo = (DefaultListModel) jl_usuariosComunes.getModel();
+                modelo.clear();
+                for (int i = 0; i < lista.getTamanio(); i++) {
+                    if (lista.getValor(i) instanceof UsuarioComun) {
+                        if (lista.getValor(i).equals(usuario_loggeado)) {
+
+                        } else {
+                            modelo.addElement(lista.getValor(i));
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
+
+        }
 
     }//GEN-LAST:event_tab_principalStateChanged
 
@@ -1961,6 +1808,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             rb_m.setSelected(true);
             rb_f.setSelected(false);
             tf_usuario_signup.setText("");
+            dt_fecha.setDate(new Date());
             ps_contraseña_signup.setText("");
             rb_candidato.setSelected(true);
             rb_comun.setSelected(false);
@@ -2031,22 +1879,19 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_modificarActionPerformed
 
-    private void tabla_modificar_correoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_modificar_correoMouseReleased
-
-    }//GEN-LAST:event_tabla_modificar_correoMouseReleased
-
     private void cb_opcion_correoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_opcion_correoItemStateChanged
 
         try {
-            if (evt.getStateChange() >= 2) {
+            if (evt.getStateChange() == 1) {
+                System.out.println("hola");
                 if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
                     DefaultTableModel modelo = new DefaultTableModel();
                     modelo.addColumn("Receptor");
                     modelo.addColumn("Emisor");
-                    modelo.addColumn("AsUnto");
+                    modelo.addColumn("Asunto");
                     modelo.addColumn("Fecha");
-                    for (int i = 0; i < usuario_loggeado.getListaCorreos().getTamanio(); i++) {
-                        Mensaje m = (Mensaje) usuario_loggeado.getListaCorreos().getValor(i);
+                    for (int i = 0; i < usuario_loggeado.getRecibidos().getTamanio(); i++) {
+                        Mensaje m = (Mensaje) usuario_loggeado.getRecibidos().getValor(i);
                         Object[] newrow = {
                             m.getReceptor(), m.getEmisor(), m.getAsunto(), m.getFecha()
 
@@ -2056,58 +1901,67 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     }
                     tabla1.setModel(modelo);
 
+                } else if (cb_opcion_correo.getSelectedItem().toString().equals("Enviados")) {
+                    DefaultTableModel modelo = new DefaultTableModel();
+                    modelo.addColumn("Receptor");
+                    modelo.addColumn("Emisor");
+                    modelo.addColumn("Asunto");
+                    modelo.addColumn("Fecha");
+                    for (int i = 0; i < usuario_loggeado.getEnviados().getTamanio(); i++) {
+                        Mensaje m = (Mensaje) usuario_loggeado.getEnviados().getValor(i);
+                        Object[] newrow = {
+                            m.getReceptor(), m.getEmisor(), m.getAsunto(), m.getFecha()
+                        };
+                        modelo.addRow(newrow);
+                    }
+                    tabla1.setModel(modelo);
                 }
-            }
-
-            if (cb_opcion_correo.getSelectedItem().toString().equals("Correos Enviados")) {
-
-                DefaultTableModel modelo = new DefaultTableModel();
-                modelo.addColumn("Receptor");
-                modelo.addColumn("Emisor");
-                modelo.addColumn("Asunto");
-                modelo.addColumn("Fecha");
-
             }
         } catch (Exception e) {
         }
-
-
     }//GEN-LAST:event_cb_opcion_correoItemStateChanged
 
     private void tabla1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseReleased
 
+        if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
+            tabla1.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    if (e.isPopupTrigger()) {
+                        JTable source = (JTable) e.getSource();
+                        int row = source.rowAtPoint(e.getPoint());
+                        int column = source.columnAtPoint(e.getPoint());
+
+                        if (!source.isRowSelected(row)) {
+                            source.changeSelection(row, column, false, false);
+                        }
+
+                        menu_responder.show(e.getComponent(), e.getX(), e.getY());
+                    }
+                }
+            });
+        }
     }//GEN-LAST:event_tabla1MouseReleased
-
-    private void tabla_tareaComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tabla_tareaComponentRemoved
-
-    }//GEN-LAST:event_tabla_tareaComponentRemoved
-
-    private void tareas_diaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tareas_diaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tareas_diaMouseClicked
-
-    private void tareas_diaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tareas_diaActionPerformed
-
-    }//GEN-LAST:event_tareas_diaActionPerformed
-
-    private void boton_guardar_tareaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_guardar_tareaMouseClicked
-
-    }//GEN-LAST:event_boton_guardar_tareaMouseClicked
-
-    private void boton_guardar_tareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_guardar_tareaActionPerformed
-
-    }//GEN-LAST:event_boton_guardar_tareaActionPerformed
-
-    private void tabla_adminMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_adminMouseReleased
-
-    }//GEN-LAST:event_tabla_adminMouseReleased
-
-    private void tabla_cuentasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla_cuentasMouseReleased
-
-    }//GEN-LAST:event_tabla_cuentasMouseReleased
 
     private void enviar_sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enviar_sendMouseClicked
 
+        try {
+            String asunto = tf_asunto_send.getText();
+            String descripcion = editorpane.getText();
+            Date fecha = new Date();
+            UsuarioComun receptor = (UsuarioComun) cb_paramensaje.getSelectedItem();
+            mensajeC = new Mensaje(usuario_loggeado, receptor, asunto, descripcion, fecha);
+            receptor.getRecibidos().agregarAlFinal(mensajeC);
+            usuario_loggeado.getEnviados().agregarAlFinal(mensajeC);
+
+            JOptionPane.showMessageDialog(this, "Mando el correo exitosamente");
+            tf_asunto_send.setText("");
+            editorpane.setText("");
+            cb_paramensaje.setSelectedIndex(0);
+            usuario_loggeado.getEnviados().listar();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_enviar_sendMouseClicked
 
     private void enviar_sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviar_sendActionPerformed
@@ -2115,7 +1969,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_enviar_sendActionPerformed
 
     private void boldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boldMouseClicked
-
+        String texto = editorpane.getSelectedText();
+        Font f = editorpane.getFont();
+        Font new_fuente = new Font(f.getFontName(), Font.BOLD, f.getSize());
+        editorpane.setFont(new_fuente);
     }//GEN-LAST:event_boldMouseClicked
 
     private void boldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boldActionPerformed
@@ -2126,10 +1983,25 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void boton_italicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_italicMouseClicked
 
+        String texto = editorpane.getSelectedText();
+        Font f = editorpane.getFont();
+        Font new_fuente = new Font(f.getFontName(), Font.ITALIC, f.getSize());
+        editorpane.setFont(new_fuente);
     }//GEN-LAST:event_boton_italicMouseClicked
 
     private void tab_principal2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal2StateChanged
+         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_paramensaje.getModel();
+        if (tab_principal2.getSelectedIndex() == 1) {
+            try {
+                modelo.removeAllElements();
+                for (int i = 0; i < usuario_loggeado.getListaAmigos().getTamanio(); i++) {
+                    modelo.addElement(usuario_loggeado.getListaAmigos().getValor(i));
+                }
+                cb_paramensaje.setModel(modelo);
+            } catch (Exception e) {
+            }
 
+        }
     }//GEN-LAST:event_tab_principal2StateChanged
 
     private void boton_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_loginMouseClicked
@@ -2212,6 +2084,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
             this.lbCorreoPerfil.setText(correo);
             this.jmi_cerrarSesion.setVisible(true);
             this.jmi_cerrarSesion.setEnabled(true);
+            jmi_login.setVisible(false);
+            jmi_registrarse.setVisible(false);
+                    
             //////////////////////////////////////////
             //Candidato
             this.lbNombrePerfil1.setText(nombre);
@@ -2220,6 +2095,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
             this.lbGeneroPerfil1.setText(sexo);
             this.lbUsuarioPerfil1.setText(usuario);
             this.lbCorreoPerfil1.setText(correo);
+            
+            
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -2245,12 +2122,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boton_modificarCPMouseClicked
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jmi_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_loginActionPerformed
         this.jd_login.setModal(true);
         this.jd_login.pack();
         this.jd_login.setLocationRelativeTo(this);
         this.jd_login.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jmi_loginActionPerformed
 
     private void jmi_registrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_registrarseActionPerformed
         // TODO add your handling code here:
@@ -2356,6 +2233,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void tf_correoCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_correoCandidatoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_correoCandidatoActionPerformed
+    private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
 
     private void jt_abrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_abrirMouseClicked
 
@@ -2386,26 +2266,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jd_signup.setEnabled(true);
         jmi_cerrarSesion.setVisible(false);
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
-
-    private void btn_cargarUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarUMouseClicked
-        // TODO add your handling code here:
-        try {
-
-            DefaultListModel modelo = (DefaultListModel) jl_usuariosComunes.getModel();
-            for (int i = 0; i < lista.getTamanio(); i++) {
-                if (lista.getValor(i) instanceof UsuarioComun) {
-                    if (lista.getValor(i).equals(usuario_loggeado)) {
-
-                    } else {
-                        modelo.addElement(lista.getValor(i));
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-    }//GEN-LAST:event_btn_cargarUMouseClicked
 
     private void poAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_poAgregarMouseClicked
         // TODO add your handling code here:
@@ -2443,7 +2303,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void jmi_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarActionPerformed
         // TODO add your handling code here:
+
         usuario_loggeado.agregarAmigo(usuario_seleccionado);
+
         usuario_loggeado.getListaAmigos().listar();
     }//GEN-LAST:event_jmi_agregarActionPerformed
 
@@ -2498,10 +2360,47 @@ public class Principal_Ventana extends javax.swing.JFrame {
         usuario_loggeado.eliminarCandidato(candidato_seleccionado);
         usuario_loggeado.getListaCandidatos().listar();
     }//GEN-LAST:event_jmi_eliminarCActionPerformed
-
+/*
     private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcion_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_opcion_correoActionPerformed
+*/
+    private void boton_sendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_sendMouseClicked
+        try {
+            int row = tabla1.getSelectedRow();
+            String asunto = asunto_send.getText();
+            String descripcion = editorpane_send.getText();
+            Date fecha = new Date();
+            usuario_receptor =(UsuarioComun)((Mensaje) usuario_loggeado.getRecibidos().getValor(row)).getEmisor();
+            Mensaje m = new Mensaje(usuario_loggeado,usuario_receptor,asunto,descripcion,fecha);
+            usuario_loggeado.getEnviados().agregarAlFinal(m);
+            usuario_receptor.getRecibidos().agregarAlFinal(m);
+            
+            JOptionPane.showMessageDialog(this, "respondio el correo exitosamente");
+            jd_mensaje.setVisible(false);
+            asunto_send.setText("");
+            editorpane_send.setText("");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_boton_sendMouseClicked
+
+    private void ResponderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResponderActionPerformed
+        // TODO add your handling code here:
+        this.jd_mensaje.setModal(true);
+        this.jd_mensaje.pack();
+        this.jd_mensaje.setLocationRelativeTo(this);
+        this.jd_mensaje.setVisible(true);
+    }//GEN-LAST:event_ResponderActionPerformed
+
+    private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
+        // TODO add your handling code here:
+        if(evt.isMetaDown()){
+            if (cb_paramensaje.getSelectedItem().toString().equals("Inbox")) {
+                menu_responder.show(evt.getComponent(), evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_tabla1MouseClicked
 
 
     /**
@@ -2543,22 +2442,22 @@ public class Principal_Ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu ListaAmigos;
     private javax.swing.JPopupMenu ListaCandidatos;
+    private javax.swing.JMenuItem Responder;
+    private javax.swing.JTextField asunto_send;
     private javax.swing.ButtonGroup bg_genero;
     private javax.swing.ButtonGroup bg_tipoUser;
     private javax.swing.JButton bold;
-    private javax.swing.JToggleButton boton_guardar_tarea;
     private javax.swing.JButton boton_italic;
     private javax.swing.JButton boton_login;
     private javax.swing.JButton boton_modificar;
     private javax.swing.JButton boton_modificar1;
     private javax.swing.JButton boton_modificarCP;
     private javax.swing.JButton boton_registrarse;
+    private javax.swing.JButton boton_send;
     private javax.swing.JButton bt_modificarPerfil;
     private javax.swing.JButton btn_cargarCandidatos;
-    private javax.swing.JButton btn_cargarU;
     private javax.swing.JButton btn_sucandidato;
     private javax.swing.JButton btn_sucomun;
-    private com.toedter.calendar.JCalendar calendar;
     private javax.swing.JComboBox<String> cb_LPubliCandidatos;
     private javax.swing.JComboBox<String> cb_opcion_correo;
     private javax.swing.JComboBox<String> cb_paramensaje;
@@ -2566,6 +2465,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dt_fecha;
     private com.toedter.calendar.JDateChooser dt_fecha1;
     private javax.swing.JEditorPane editorpane;
+    private javax.swing.JEditorPane editorpane_send;
     private javax.swing.JButton enviar_send;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2621,20 +2521,17 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -2645,16 +2542,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JDialog jd_escoger;
     private javax.swing.JDialog jd_homecandidato;
     private javax.swing.JDialog jd_homecomun;
     private javax.swing.JDialog jd_login;
+    private javax.swing.JDialog jd_mensaje;
     private javax.swing.JDialog jd_modifcarCandidato;
     private javax.swing.JDialog jd_modificarPerfil;
     private javax.swing.JDialog jd_signup;
@@ -2666,6 +2561,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_cerrarSesion;
     private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JMenuItem jmi_eliminarC;
+    private javax.swing.JMenuItem jmi_login;
     private javax.swing.JMenuItem jmi_registrarse;
     private javax.swing.JMenu jt_abrir;
     private javax.swing.JLabel lbApellidoPerfil;
@@ -2687,6 +2583,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JPopupMenu menu_popAC;
     private javax.swing.JPopupMenu menu_popE;
     private javax.swing.JPopupMenu menu_popEC;
+    private javax.swing.JPopupMenu menu_responder;
     private javax.swing.JMenuItem poAgregar;
     private javax.swing.JMenuItem poEliminar;
     private javax.swing.JMenuItem poSeguir;
@@ -2709,11 +2606,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tab_principal1;
     private javax.swing.JTabbedPane tab_principal2;
     private javax.swing.JTable tabla1;
-    private javax.swing.JTable tabla_admin;
-    private javax.swing.JTable tabla_cuentas;
-    private javax.swing.JTable tabla_modificar_correo;
-    private javax.swing.JTable tabla_tarea;
-    private javax.swing.JToggleButton tareas_dia;
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_apellido1;
     private javax.swing.JTextField tf_apellidoCandidato;
@@ -2739,10 +2631,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
     String password, direccion, correo;
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
-    UsuarioComun usuario_loggeado = null;
+    UsuarioComun usuario_loggeado = null, usuario_receptor=null;
     UsuarioCandidato usuario_loggeadoC = null;
     UsuarioComun usuario_seleccionado = null;
     UsuarioCandidato candidato_seleccionado = null;
+    
     //adminUsuario au;
-    //Mensaje correo = new Mensaje();
+    Mensaje mensajeC = new Mensaje();
 }

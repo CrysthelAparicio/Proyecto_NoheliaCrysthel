@@ -8,8 +8,9 @@ public class UsuarioComun extends Usuario {
     private String direccion;
     private File archivo = null;
     private Lista listaAmigos = new Lista();
-    private Lista listaCorreos = new Lista();
     private Lista listaCandidatos = new Lista();
+    private Lista mensajes_recibidos = new Lista();
+    private Lista mensajes_enviados = new Lista();
 
     public UsuarioComun() {
     }
@@ -32,8 +33,11 @@ public class UsuarioComun extends Usuario {
         }
         
     }
-     public void agregarCorreo(Mensaje m){
-        listaCorreos.agregarAlFinal(m);
+     public void agregarEnviado(Mensaje m){
+        mensajes_enviados.agregarAlFinal(m);
+    }
+     public void agregarRecibido(Mensaje m){
+        mensajes_recibidos.agregarAlFinal(m);
     }
      public void agregarCandidato(UsuarioCandidato c){
         listaCandidatos.agregarAlFinal(c);
@@ -58,12 +62,20 @@ public class UsuarioComun extends Usuario {
         this.listaAmigos = listaAmigos;
     }
 
-    public Lista getListaCorreos() {
-        return listaCorreos;
+    public Lista getEnviados() {
+        return mensajes_enviados;
     }
 
-    public void setListaCorreos(Lista listaCorreos) {
-        this.listaCorreos = listaCorreos;
+    public void setEnviados(Lista listaCorreos) {
+        this.mensajes_enviados = listaCorreos;
+    }
+    
+    public Lista getRecibidos() {
+        return mensajes_recibidos;
+    }
+
+    public void setRecibidos(Lista listaCorreos) {
+        this.mensajes_recibidos = listaCorreos;
     }
 
     public Lista getListaCandidatos() {
