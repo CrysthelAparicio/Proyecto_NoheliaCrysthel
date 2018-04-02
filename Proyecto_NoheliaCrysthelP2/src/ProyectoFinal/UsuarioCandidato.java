@@ -23,4 +23,30 @@ public class UsuarioCandidato extends Usuario {
     public void agregarSeguidor(UsuarioComun u){
         listaSeguidores.agregarAlFinal(u);
     }
+
+    public Lista getListaCertificaciones() {
+        return listaCertificaciones;
+    }
+
+    public void setListaCertificaciones(Lista listaCertificaciones) {
+        this.listaCertificaciones = listaCertificaciones;
+    }
+
+    public Lista getListaPublicaciones() {
+        return listaPublicaciones;
+    }
+
+    public void setListaPublicaciones(Lista listaPublicaciones) {
+        this.listaPublicaciones = listaPublicaciones;
+    }
+
+    public Lista getListaSeguidores() {
+        return listaSeguidores;
+    }
+
+    public void setListaSeguidores(Lista listaSeguidores) {
+        this.listaSeguidores = listaSeguidores;
+    }
+    
+    
 }

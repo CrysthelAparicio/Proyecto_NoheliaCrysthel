@@ -3,6 +3,7 @@ package ProyectoFinal;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,6 +45,32 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jd_homecomun = new javax.swing.JDialog();
         tab_principal = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
+        cb_depto = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        js_numeroActa = new javax.swing.JSpinner();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ta_acta = new javax.swing.JTextArea();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jLabel63 = new javax.swing.JLabel();
+        jLabel64 = new javax.swing.JLabel();
+        jLabel65 = new javax.swing.JLabel();
+        jLabel68 = new javax.swing.JLabel();
+        jLabel69 = new javax.swing.JLabel();
+        jLabel70 = new javax.swing.JLabel();
+        tf_joh = new javax.swing.JTextField();
+        tf_marlene = new javax.swing.JTextField();
+        tf_lucas = new javax.swing.JTextField();
+        tf_eliseo = new javax.swing.JTextField();
+        tf_alfonso = new javax.swing.JTextField();
+        tf_luis = new javax.swing.JTextField();
+        tf_isaias = new javax.swing.JTextField();
+        tf_nasry = new javax.swing.JTextField();
+        tf_romeo = new javax.swing.JTextField();
+        btn_guardarActa = new javax.swing.JButton();
+        btn_cargarActa = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         tab_principal2 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
@@ -231,15 +258,171 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
+        cb_depto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Atlantida", "Choluteca", "Colon", "Comayagua", "Copan", "Cortes", "El Paraiso", "Francisco Morazan", "Gracias a Dios", "Intibuca", "Islas de la Bahia", "La Paz", "Lempira", "Ocotepeque", "Olancho", "Santa Barbara", "Valle", "Yoro" }));
+
+        jLabel17.setText("Departamento");
+
+        jLabel24.setText("Numero de Acta");
+
+        js_numeroActa.setModel(new javax.swing.SpinnerNumberModel(0, null, 99, 1));
+
+        ta_acta.setColumns(20);
+        ta_acta.setRows(5);
+        jScrollPane4.setViewportView(ta_acta);
+
+        jLabel33.setText("Juan Orlando Hernandez");
+
+        jLabel58.setText("Romeo Vasquez");
+
+        jLabel62.setText("Marlene Alvarenga");
+
+        jLabel63.setText("Lucas Aguilera");
+
+        jLabel64.setText("Eliseo Vallecillo");
+
+        jLabel65.setText("Alfonso Díaz Narvaez");
+
+        jLabel68.setText("Luis Zelaya");
+
+        jLabel69.setText("Isaías Fonseca");
+
+        jLabel70.setText("Salvador Nasralla");
+
+        tf_isaias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_isaiasActionPerformed(evt);
+            }
+        });
+
+        btn_guardarActa.setText("Guardar");
+        btn_guardarActa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_guardarActaMouseClicked(evt);
+            }
+        });
+
+        btn_cargarActa.setText("Cargar Acta");
+        btn_cargarActa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_cargarActaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel17)
+                .addGap(112, 112, 112)
+                .addComponent(cb_depto, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(jLabel24)
+                .addGap(51, 51, 51)
+                .addComponent(js_numeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
+                .addComponent(btn_cargarActa)
+                .addGap(99, 99, 99))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel58)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_romeo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel62)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_marlene, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel63)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_lucas, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel64)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_eliseo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel65)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_alfonso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel68)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_luis, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel69)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_isaias, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel70)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_nasry, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addComponent(jLabel33)
+                            .addGap(50, 50, 50)
+                            .addComponent(tf_joh, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_guardarActa))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 643, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_depto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel24)
+                    .addComponent(js_numeroActa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cargarActa))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel33)
+                            .addComponent(tf_joh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel58)
+                            .addComponent(tf_romeo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel62)
+                            .addComponent(tf_marlene, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel63)
+                            .addComponent(tf_lucas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel64)
+                            .addComponent(tf_eliseo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel65)
+                            .addComponent(tf_alfonso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel68)
+                            .addComponent(tf_luis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel69)
+                            .addComponent(tf_isaias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel70)
+                            .addComponent(tf_nasry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(btn_guardarActa))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
 
         tab_principal.addTab("Actas", jPanel6);
@@ -2263,8 +2446,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
         usuario_loggeadoC = null;
         JOptionPane.showMessageDialog(this, "Usted ha cerrado Sesion, bai");
         jd_login.setEnabled(true);
-        jd_signup.setEnabled(true);
+        jd_login.setVisible(true);
+        jmi_login.setVisible(true);
+        jmi_registrarse.setVisible(true);
         jmi_cerrarSesion.setVisible(false);
+        try {
+            lista.listar();
+            admin.setListaUsuarios(lista);
+            admin.escribirArchivo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
 
     private void poAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_poAgregarMouseClicked
@@ -2334,7 +2527,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void jmi_agregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarCActionPerformed
         // TODO add your handling code here:
         usuario_loggeado.agregarCandidato(candidato_seleccionado);
+        candidato_seleccionado.agregarSeguidor(usuario_loggeado);
         usuario_loggeado.getListaCandidatos().listar();
+        candidato_seleccionado.getListaSeguidores().listar();
     }//GEN-LAST:event_jmi_agregarCActionPerformed
 
     private void jl_candidatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_candidatosMouseClicked
@@ -2402,6 +2597,58 @@ public class Principal_Ventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla1MouseClicked
 
+    private void tf_isaiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_isaiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_isaiasActionPerformed
+
+    private void btn_cargarActaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarActaMouseClicked
+        // TODO add your handling code here:
+        String departamento = (String)cb_depto.getSelectedItem();
+        int acta =  (Integer)js_numeroActa.getValue();
+        
+        AdminActas aa = new AdminActas("./Actas/"+departamento+"/"+acta+".txt", ta_acta);
+        aa.cargarArchivo();
+        
+    }//GEN-LAST:event_btn_cargarActaMouseClicked
+
+    private void btn_guardarActaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarActaMouseClicked
+        // TODO add your handling code here:
+        int alfonso=0, salvador=0, eliseo=0, lucas=0, luis=0, romeo=0, isaias=0, marlene=0,joh=0;
+        int cont=0;
+        String str = ta_acta.getText();
+        String[] partes = str.split("\n");
+        for (String parte : partes) {
+            if (parte.equals("Lucas Aguilera")) {
+                lucas++;
+            }else if(parte.equals("Luis Zelaya")){
+                luis++;
+            }else if(parte.equals("Elseo Vallecillo Reyes")){
+                eliseo++;
+            }else if(parte.equals("Romeo Vasquez Velasquez")){
+                romeo++;
+            }else if(parte.equals("Marlene Alvarenga")){
+                marlene++;
+            }else if(parte.equals("Isaias Foncesa")){
+                isaias++;
+            }else if(parte.equals("Jose Alfonso Diaz Narvaez")){
+                alfonso++;
+            }else if(parte.equals("Salvador Nasralla")){
+                salvador++;
+            }else if(parte.equals("Juan Orlando Hernandez")){
+                joh++;
+            }
+        }
+        if (lucas==Integer.parseInt(tf_lucas.getText())&& luis == Integer.parseInt(tf_luis.getText()) && eliseo == Integer.parseInt(tf_eliseo.getText()) 
+                &&  romeo ==Integer.parseInt(tf_romeo.getText()) && marlene == Integer.parseInt(tf_marlene.getText()) && 
+                isaias == Integer.parseInt(tf_isaias.getText())  && alfonso == Integer.parseInt(tf_alfonso.getText())
+                && salvador == Integer.parseInt(tf_nasry.getText()) && joh ==Integer.parseInt(tf_joh.getText())) {
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_btn_guardarActaMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -2455,10 +2702,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JButton boton_registrarse;
     private javax.swing.JButton boton_send;
     private javax.swing.JButton bt_modificarPerfil;
+    private javax.swing.JButton btn_cargarActa;
     private javax.swing.JButton btn_cargarCandidatos;
+    private javax.swing.JButton btn_guardarActa;
     private javax.swing.JButton btn_sucandidato;
     private javax.swing.JButton btn_sucomun;
     private javax.swing.JComboBox<String> cb_LPubliCandidatos;
+    private javax.swing.JComboBox<String> cb_depto;
     private javax.swing.JComboBox<String> cb_opcion_correo;
     private javax.swing.JComboBox<String> cb_paramensaje;
     private com.toedter.calendar.JDateChooser dtFechaCandidato;
@@ -2475,6 +2725,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -2482,6 +2733,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -2491,6 +2743,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
@@ -2517,13 +2770,21 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel64;
+    private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
@@ -2542,6 +2803,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -2563,6 +2825,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_eliminarC;
     private javax.swing.JMenuItem jmi_login;
     private javax.swing.JMenuItem jmi_registrarse;
+    private javax.swing.JSpinner js_numeroActa;
     private javax.swing.JMenu jt_abrir;
     private javax.swing.JLabel lbApellidoPerfil;
     private javax.swing.JLabel lbApellidoPerfil1;
@@ -2602,10 +2865,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JRadioButton rb_m2;
     private javax.swing.JTextField t_direccion;
     private javax.swing.JTextArea ta_PubliCandidatos;
+    private javax.swing.JTextArea ta_acta;
     private javax.swing.JTabbedPane tab_principal;
     private javax.swing.JTabbedPane tab_principal1;
     private javax.swing.JTabbedPane tab_principal2;
     private javax.swing.JTable tabla1;
+    private javax.swing.JTextField tf_alfonso;
     private javax.swing.JTextField tf_apellido;
     private javax.swing.JTextField tf_apellido1;
     private javax.swing.JTextField tf_apellidoCandidato;
@@ -2614,9 +2879,17 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField tf_correo1;
     private javax.swing.JTextField tf_correoCandidato;
     private javax.swing.JTextField tf_direccion;
+    private javax.swing.JTextField tf_eliseo;
+    private javax.swing.JTextField tf_isaias;
+    private javax.swing.JTextField tf_joh;
+    private javax.swing.JTextField tf_lucas;
+    private javax.swing.JTextField tf_luis;
+    private javax.swing.JTextField tf_marlene;
+    private javax.swing.JTextField tf_nasry;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombre1;
     private javax.swing.JTextField tf_nombreCandidato;
+    private javax.swing.JTextField tf_romeo;
     private javax.swing.JTextField tf_usuario1;
     private javax.swing.JTextField tf_usuarioCandidadto;
     private javax.swing.JTextField tf_usuario_login;
@@ -2630,11 +2903,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
     String usuario;
     String password, direccion, correo;
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+    
+    AdminUsuarios admin = new AdminUsuarios("./usuarios.txt");
+    
 
     UsuarioComun usuario_loggeado = null, usuario_receptor=null;
     UsuarioCandidato usuario_loggeadoC = null;
     UsuarioComun usuario_seleccionado = null;
     UsuarioCandidato candidato_seleccionado = null;
+    String acta_temporal;
     
     //adminUsuario au;
     Mensaje mensajeC = new Mensaje();
