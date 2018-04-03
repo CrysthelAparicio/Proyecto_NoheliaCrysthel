@@ -5,15 +5,18 @@
  */
 package ProyectoFinal;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author euced
  */
-public class Publicacion {
-   private String texto;
-   private Date fechaPubli;
+public class Publicacion implements Serializable {
+
+    private static final long SerialVersionUID = 888L;
+    private String texto;
+    private Date fechaPubli;
 
     public Publicacion() {
     }
@@ -43,6 +46,5 @@ public class Publicacion {
     public String toString() {
         return "Publicacion{" + "texto=" + texto + ", fechaPubli=" + fechaPubli + '}';
     }
-   
-   
+
 }

@@ -976,12 +976,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         .addComponent(jLabel40)
                         .addGap(31, 31, 31)
                         .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel42)
-                .addGap(25, 25, 25))
+                .addGap(162, 162, 162))
             .addGroup(jd_loginLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel1)
+                .addGap(168, 168, 168)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel42)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_loginLayout.setVerticalGroup(
@@ -989,19 +989,19 @@ public class Principal_Ventana extends javax.swing.JFrame {
             .addGroup(jd_loginLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel42)
+                .addGap(12, 12, 12)
                 .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel40)
-                    .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel42)))
+                    .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(80, 80, 80)
                 .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel41)
                     .addComponent(ps_password_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(boton_login)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         bg_genero.add(rb_m);
@@ -1946,16 +1946,36 @@ public class Principal_Ventana extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tab_principalStateChanged
+    public int edad(String fecha_nac) {
+        Date fechaActual = new Date();
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        String hoy = formato.format(fechaActual);
+        String[] dat1 = fecha_nac.split("/");
+        String[] dat2 = hoy.split("/");
+        int anos = Integer.parseInt(dat2[2]) - Integer.parseInt(dat1[2]);
+        int mes = Integer.parseInt(dat2[1]) - Integer.parseInt(dat1[1]);
+        if (mes < 0) {
+            anos = anos - 1;
+        } else if (mes == 0) {
+            int dia = Integer.parseInt(dat2[0]) - Integer.parseInt(dat1[0]);
+            if (dia > 0) {
+                anos = anos - 1;
+            } else if (anos > 2000) {
+                System.out.println("No se puede registrar, debe ser mayor de 18 años");
+            }
+        }
+        return anos;
+    }
 
     private void boton_registrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boton_registrarseMouseClicked
         // sign up
         try {
+            String fecha_nac = null;
             nombre = tf_nombre.getText();
             apellido = tf_apellido.getText();
             fecha = dt_fecha.getDate();
+            //edad(fecha_nac);
 
-            //Date fecha = df.parse(dt_fecha.getDateFormatString());
-            //System.out.println(fecha.getYear());
             if (rb_m.isSelected()) {
                 sexo = "Masculino";
             }
@@ -2173,7 +2193,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_boton_italicMouseClicked
 
     private void tab_principal2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal2StateChanged
-         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_paramensaje.getModel();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_paramensaje.getModel();
         if (tab_principal2.getSelectedIndex() == 1) {
             try {
                 modelo.removeAllElements();
@@ -2258,28 +2278,26 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
         // TODO add your handling code here:
         try {
-            this.lbNombrePerfil.setText(nombre);
-            this.lbApellidoPerfil.setText(apellido);
+            this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
+            this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
             this.lbFechaPerfil.setText(fecha.toString());
-            this.lbDireccionPerfil.setText(direccion);
-            this.lbGeneroPerfil.setText(sexo);
-            this.lbUsuarioPerfil.setText(usuario);
-            this.lbCorreoPerfil.setText(correo);
+            this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
+            this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
+            this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
+            this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
             this.jmi_cerrarSesion.setVisible(true);
             this.jmi_cerrarSesion.setEnabled(true);
             jmi_login.setVisible(false);
             jmi_registrarse.setVisible(false);
-                    
+
             //////////////////////////////////////////
             //Candidato
-            this.lbNombrePerfil1.setText(nombre);
-            this.lbApellidoPerfil1.setText(apellido);
+            this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+            this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
             this.lbFechaPerfil1.setText(fecha.toString());
-            this.lbGeneroPerfil1.setText(sexo);
-            this.lbUsuarioPerfil1.setText(usuario);
-            this.lbCorreoPerfil1.setText(correo);
-            
-            
+            this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+            this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+            this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -2416,9 +2434,9 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void tf_correoCandidatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_correoCandidatoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_correoCandidatoActionPerformed
-    private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                                
+    }
 
     private void jt_abrirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_abrirMouseClicked
 
@@ -2453,11 +2471,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         try {
             lista.listar();
             admin.setListaUsuarios(lista);
-            admin.escribirArchivo();
+            //admin.escribirArchivo();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
     }//GEN-LAST:event_jmi_cerrarSesionActionPerformed
 
     private void poAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_poAgregarMouseClicked
@@ -2555,7 +2573,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         usuario_loggeado.eliminarCandidato(candidato_seleccionado);
         usuario_loggeado.getListaCandidatos().listar();
     }//GEN-LAST:event_jmi_eliminarCActionPerformed
-/*
+    /*
     private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcion_correoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_opcion_correoActionPerformed
@@ -2566,11 +2584,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
             String asunto = asunto_send.getText();
             String descripcion = editorpane_send.getText();
             Date fecha = new Date();
-            usuario_receptor =(UsuarioComun)((Mensaje) usuario_loggeado.getRecibidos().getValor(row)).getEmisor();
-            Mensaje m = new Mensaje(usuario_loggeado,usuario_receptor,asunto,descripcion,fecha);
+            usuario_receptor = (UsuarioComun) ((Mensaje) usuario_loggeado.getRecibidos().getValor(row)).getEmisor();
+            Mensaje m = new Mensaje(usuario_loggeado, usuario_receptor, asunto, descripcion, fecha);
             usuario_loggeado.getEnviados().agregarAlFinal(m);
             usuario_receptor.getRecibidos().agregarAlFinal(m);
-            
+
             JOptionPane.showMessageDialog(this, "respondio el correo exitosamente");
             jd_mensaje.setVisible(false);
             asunto_send.setText("");
@@ -2590,7 +2608,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
         // TODO add your handling code here:
-        if(evt.isMetaDown()){
+        if (evt.isMetaDown()) {
             if (cb_paramensaje.getSelectedItem().toString().equals("Inbox")) {
                 menu_responder.show(evt.getComponent(), evt.getX(), evt.getY());
             }
@@ -2603,52 +2621,50 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void btn_cargarActaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarActaMouseClicked
         // TODO add your handling code here:
-        String departamento = (String)cb_depto.getSelectedItem();
-        int acta =  (Integer)js_numeroActa.getValue();
-        
-        AdminActas aa = new AdminActas("./Actas/"+departamento+"/"+acta+".txt", ta_acta);
+        String departamento = (String) cb_depto.getSelectedItem();
+        int acta = (Integer) js_numeroActa.getValue();
+
+        AdminActas aa = new AdminActas("./Actas/" + departamento + "/" + acta + ".txt", ta_acta);
         aa.cargarArchivo();
-        
+
     }//GEN-LAST:event_btn_cargarActaMouseClicked
 
     private void btn_guardarActaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarActaMouseClicked
         // TODO add your handling code here:
-        int alfonso=0, salvador=0, eliseo=0, lucas=0, luis=0, romeo=0, isaias=0, marlene=0,joh=0;
-        int cont=0;
+        int alfonso = 0, salvador = 0, eliseo = 0, lucas = 0, luis = 0, romeo = 0, isaias = 0, marlene = 0, joh = 0;
+        int cont = 0;
         String str = ta_acta.getText();
         String[] partes = str.split("\n");
         for (String parte : partes) {
             if (parte.equals("Lucas Aguilera")) {
                 lucas++;
-            }else if(parte.equals("Luis Zelaya")){
+            } else if (parte.equals("Luis Zelaya")) {
                 luis++;
-            }else if(parte.equals("Elseo Vallecillo Reyes")){
+            } else if (parte.equals("Elseo Vallecillo Reyes")) {
                 eliseo++;
-            }else if(parte.equals("Romeo Vasquez Velasquez")){
+            } else if (parte.equals("Romeo Vasquez Velasquez")) {
                 romeo++;
-            }else if(parte.equals("Marlene Alvarenga")){
+            } else if (parte.equals("Marlene Alvarenga")) {
                 marlene++;
-            }else if(parte.equals("Isaias Foncesa")){
+            } else if (parte.equals("Isaias Foncesa")) {
                 isaias++;
-            }else if(parte.equals("Jose Alfonso Diaz Narvaez")){
+            } else if (parte.equals("Jose Alfonso Diaz Narvaez")) {
                 alfonso++;
-            }else if(parte.equals("Salvador Nasralla")){
+            } else if (parte.equals("Salvador Nasralla")) {
                 salvador++;
-            }else if(parte.equals("Juan Orlando Hernandez")){
+            } else if (parte.equals("Juan Orlando Hernandez")) {
                 joh++;
             }
         }
-        if (lucas==Integer.parseInt(tf_lucas.getText())&& luis == Integer.parseInt(tf_luis.getText()) && eliseo == Integer.parseInt(tf_eliseo.getText()) 
-                &&  romeo ==Integer.parseInt(tf_romeo.getText()) && marlene == Integer.parseInt(tf_marlene.getText()) && 
-                isaias == Integer.parseInt(tf_isaias.getText())  && alfonso == Integer.parseInt(tf_alfonso.getText())
-                && salvador == Integer.parseInt(tf_nasry.getText()) && joh ==Integer.parseInt(tf_joh.getText())) {
-            
-        }
-        
-        
-        
-    }//GEN-LAST:event_btn_guardarActaMouseClicked
+        if (lucas == Integer.parseInt(tf_lucas.getText()) && luis == Integer.parseInt(tf_luis.getText()) && eliseo == Integer.parseInt(tf_eliseo.getText())
+                && romeo == Integer.parseInt(tf_romeo.getText()) && marlene == Integer.parseInt(tf_marlene.getText())
+                && isaias == Integer.parseInt(tf_isaias.getText()) && alfonso == Integer.parseInt(tf_alfonso.getText())
+                && salvador == Integer.parseInt(tf_nasry.getText()) && joh == Integer.parseInt(tf_joh.getText())) {
 
+        }
+
+
+    }//GEN-LAST:event_btn_guardarActaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2903,16 +2919,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
     String usuario;
     String password, direccion, correo;
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-    
-    AdminUsuarios admin = new AdminUsuarios("./usuarios.txt");
-    
 
-    UsuarioComun usuario_loggeado = null, usuario_receptor=null;
+    AdminUsuarios admin = new AdminUsuarios("./usuarios.txt");
+
+    UsuarioComun usuario_loggeado = null, usuario_receptor = null;
     UsuarioCandidato usuario_loggeadoC = null;
     UsuarioComun usuario_seleccionado = null;
     UsuarioCandidato candidato_seleccionado = null;
     String acta_temporal;
-    
+
     //adminUsuario au;
     Mensaje mensajeC = new Mensaje();
 }

@@ -5,11 +5,14 @@
  */
 package ProyectoFinal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author euced
  */
-public class Certificacion {
+public class Certificacion implements Serializable{
+    private static final long SerialVersionUID=666L;
     private String nombre;
 
     public Certificacion() {
