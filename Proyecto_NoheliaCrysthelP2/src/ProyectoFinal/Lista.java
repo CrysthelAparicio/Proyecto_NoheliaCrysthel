@@ -5,11 +5,14 @@
  */
 package ProyectoFinal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author euced
  */
-public class Lista {
+public class Lista implements Serializable{
+    private static final long SerialVersionUID =888L;
 
     // Puntero que indica el inicio de la lista o conocida tambien
     // como cabeza de la lista.

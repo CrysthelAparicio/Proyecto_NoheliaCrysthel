@@ -26,8 +26,17 @@ public class Principal_Ventana extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Red Elecciones");
+        try {
+            admin.cargarArchivo();
+            lista = admin.getListaUsuarios();
+        } catch (Exception e) {
+            System.out.println("ocurrio un error");
+
+        }
+
         jmi_cerrarSesion.setVisible(false);
         jmi_cerrarSesion.setEnabled(false);
+
 
         /*setIconImage(new ImageIcon(getClass().getResource("./imagenes/red.png")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
@@ -1849,7 +1858,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
         });
         menu_responder.add(Responder);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jt_abrir.setText("Abrir");
         jt_abrir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1920,6 +1936,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
             .addGap(0, 693, Short.MAX_VALUE)
         );
 
+        getAccessibleContext().setAccessibleName("frame");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1946,6 +1964,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tab_principalStateChanged
+    
+    
+    
+    
+
     public int edad(String fecha_nac) {
         Date fechaActual = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -1990,6 +2013,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             if (rb_candidato.isSelected()) {
                 UsuarioCandidato uca = new UsuarioCandidato(nombre, apellido, fecha, sexo, usuario, password, correo);
                 lista.agregarAlFinal(uca);
+
             }
             if (rb_comun.isSelected()) {
                 UsuarioComun uc = new UsuarioComun(direccion, nombre, apellido, fecha, sexo, usuario, password, correo);
@@ -2213,10 +2237,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
             for (int i = 0; i < lista.getTamanio(); i++) {
                 if (lista.getValor(i) instanceof UsuarioCandidato) {
                     if (this.tf_usuario_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getUsuario()) && this.ps_password_login.getText().equals(((UsuarioCandidato) lista.getValor(i)).getContraseña())) {
-                        JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
-                                + "\n Bienvenido(a) al Home Menu :)");
+                        JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText());
 
                         usuario_loggeadoC = (UsuarioCandidato) lista.getValor(i);
+                        poner();
                         this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
                         this.jd_homecandidato.setModal(true);
@@ -2236,6 +2260,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         sexo = ((UsuarioCandidato) lista.getValor(i)).getSexo();
                         usuario = ((UsuarioCandidato) lista.getValor(i)).getUsuario();
                         correo = ((UsuarioCandidato) lista.getValor(i)).getCorreo();
+                        this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+                        this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
+                        this.lbFechaPerfil1.setText(fecha.toString());
+                        this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+                        this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+                        this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
                         break;
                     }
 
@@ -2244,6 +2274,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
                                 + "\n Bienvenido(a) al Home Menu :)");
                         usuario_loggeado = (UsuarioComun) lista.getValor(i);
+                        poner();
                         this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
                         this.jd_homecomun.setModal(true);
@@ -2263,6 +2294,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         sexo = ((UsuarioComun) lista.getValor(i)).getSexo();
                         usuario = ((UsuarioComun) lista.getValor(i)).getUsuario();
                         correo = ((UsuarioComun) lista.getValor(i)).getCorreo();
+                        this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
+                        this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
+                        this.lbFechaPerfil.setText(fecha.toString());
+                        this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
+                        this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
+                        this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
+                        this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
                         break;
                     }
                 }
@@ -2275,34 +2313,22 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_boton_loginMouseClicked
 
-    private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
-        // TODO add your handling code here:
+    private void poner() {
         try {
-            this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
-            this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
-            this.lbFechaPerfil.setText(fecha.toString());
-            this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
-            this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
-            this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
-            this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
+
             this.jmi_cerrarSesion.setVisible(true);
             this.jmi_cerrarSesion.setEnabled(true);
-            jmi_login.setVisible(false);
-            jmi_registrarse.setVisible(false);
 
             //////////////////////////////////////////
             //Candidato
-            this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
-            this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
-            this.lbFechaPerfil1.setText(fecha.toString());
-            this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
-            this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
-            this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+    private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
+        // TODO add your handling code here:
+
 
     }//GEN-LAST:event_boton_loginActionPerformed
 
@@ -2337,6 +2363,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         this.jd_signup.setLocationRelativeTo(this);
         this.jd_signup.setVisible(true);
         rb_candidato.setSelected(true);
+
 
     }//GEN-LAST:event_jmi_registrarseActionPerformed
 
@@ -2666,6 +2693,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_guardarActaMouseClicked
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        admin.setListaUsuarios(lista);
+        admin.escribirArchivo();
+        System.out.println("ok");
+    }//GEN-LAST:event_formWindowClosing
+
     /**
      * @param args the command line arguments
      */
@@ -2920,7 +2959,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     String password, direccion, correo;
     DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
 
-    AdminUsuarios admin = new AdminUsuarios("./usuarios.txt");
+    AdminUsuarios admin = new AdminUsuarios("./usuarios.cbm");
 
     UsuarioComun usuario_loggeado = null, usuario_receptor = null;
     UsuarioCandidato usuario_loggeadoC = null;
@@ -2930,4 +2969,5 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     //adminUsuario au;
     Mensaje mensajeC = new Mensaje();
+   
 }
