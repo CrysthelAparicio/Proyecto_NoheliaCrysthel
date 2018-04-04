@@ -172,7 +172,7 @@ public class AdminUsuarios {
     
     //mutador extra
     public void setUsuarios(Usuario u) {
-        listaUsuarios.add(u);
+        listaUsuarios.agregarAlFinal(u);
     }
 
     public void cargarArchivo() {
@@ -185,7 +185,7 @@ public class AdminUsuarios {
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
                     while ((temp = (Usuario) objeto.readObject()) != null) {
-                        listaUsuarios.add(temp);
+                        listaUsuarios.agregarAlFinal(temp);
                     }
                 } catch (EOFException e) {
                     //ENCONTRO EL FINAL DEL ARCHIVO
@@ -206,10 +206,14 @@ public class AdminUsuarios {
 
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (Usuario u : listaUsuarios) {
-                bw.writeObject(u);
-
+            for (int i = 0; i < listaUsuarios.getTamanio(); i++) {
+                bw.writeObject(listaUsuarios.getValor(i));
             }
+            //////////
+//            for (Usuario u : listaUsuarios) {
+//                bw.writeObject(u);
+//
+//            }
             bw.flush();
 
         } catch (Exception ex) {
