@@ -35,7 +35,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         }
 
         jmi_cerrarSesion.setVisible(false);
-        jmi_cerrarSesion.setEnabled(false);
 
 
         /*setIconImage(new ImageIcon(getClass().getResource("./imagenes/red.png")).getImage());
@@ -1858,6 +1857,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         });
         menu_responder.add(Responder);
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -1961,13 +1961,27 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
             }
 
+        } else if (tab_principal.getSelectedIndex() == 5) {
+            if (usuario_loggeadoC != null) {
+                this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+                this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
+                this.lbFechaPerfil1.setText(usuario_loggeadoC.getFecha_nacimiento().toString());
+                this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+                this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+                this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
+            } else if (usuario_loggeado != null) {
+                this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
+                this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
+                this.lbFechaPerfil.setText(usuario_loggeado.getFecha_nacimiento().toString());
+                this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
+                this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
+                this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
+                this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
+
+            }
         }
 
     }//GEN-LAST:event_tab_principalStateChanged
-    
-    
-    
-    
 
     public int edad(String fecha_nac) {
         Date fechaActual = new Date();
@@ -2082,8 +2096,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
             int u = lista.getPosicion(usuario_loggeado);
             lista.editarPorPosicion(u, usuario_loggeado);
 
-            lista.listar();
-
             //  F A L T A
             tf_direccion.setText("");
             tf_nombre1.setText("");
@@ -2110,7 +2122,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
         try {
             if (evt.getStateChange() == 1) {
-                System.out.println("hola");
                 if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
                     DefaultTableModel modelo = new DefaultTableModel();
                     modelo.addColumn("Receptor");
@@ -2240,32 +2251,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText());
 
                         usuario_loggeadoC = (UsuarioCandidato) lista.getValor(i);
-                        poner();
-                        this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
                         this.jd_homecandidato.setModal(true);
                         this.jd_homecandidato.pack();
                         this.jd_homecandidato.setLocationRelativeTo(this);
                         this.jd_homecandidato.setVisible(true);
-                        this.jd_homecandidato.setEnabled(true);
                         //this.menu_logout.setEnabled(true);
 
                         tf_usuario_login.setText("");
                         ps_password_login.setText("");
-
-                        System.out.println(usuario_loggeadoC.getNombre());
-                        nombre = ((UsuarioCandidato) lista.getValor(i)).getNombre();
-                        apellido = ((UsuarioCandidato) lista.getValor(i)).getApelido();
-                        fecha = ((UsuarioCandidato) lista.getValor(i)).getFecha_nacimiento();
-                        sexo = ((UsuarioCandidato) lista.getValor(i)).getSexo();
-                        usuario = ((UsuarioCandidato) lista.getValor(i)).getUsuario();
-                        correo = ((UsuarioCandidato) lista.getValor(i)).getCorreo();
-                        this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
-                        this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
-                        this.lbFechaPerfil1.setText(fecha.toString());
-                        this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
-                        this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
-                        this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
                         break;
                     }
 
@@ -2274,33 +2268,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Bienvenido usuario:  \n" + tf_usuario_login.getText()
                                 + "\n Bienvenido(a) al Home Menu :)");
                         usuario_loggeado = (UsuarioComun) lista.getValor(i);
-                        poner();
-                        this.jd_login.setEnabled(false);
                         this.jd_login.setVisible(false);
                         this.jd_homecomun.setModal(true);
                         this.jd_homecomun.pack();
                         this.jd_homecomun.setLocationRelativeTo(this);
                         this.jd_homecomun.setVisible(true);
-                        this.jd_homecandidato.setEnabled(true);
                         //this.menu_logout.setEnabled(true);
 
                         tf_usuario_login.setText("");
                         ps_password_login.setText("");
-                        nombre = ((UsuarioComun) lista.getValor(i)).getNombre();
-                        usuario_loggeado = (UsuarioComun) lista.getValor(i);
-                        apellido = ((UsuarioComun) lista.getValor(i)).getApelido();
-                        direccion = ((UsuarioComun) lista.getValor(i)).getDireccion();
-                        fecha = ((UsuarioComun) lista.getValor(i)).getFecha_nacimiento();
-                        sexo = ((UsuarioComun) lista.getValor(i)).getSexo();
-                        usuario = ((UsuarioComun) lista.getValor(i)).getUsuario();
-                        correo = ((UsuarioComun) lista.getValor(i)).getCorreo();
-                        this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
-                        this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
-                        this.lbFechaPerfil.setText(fecha.toString());
-                        this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
-                        this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
-                        this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
-                        this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
                         break;
                     }
                 }
@@ -2313,21 +2289,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_boton_loginMouseClicked
 
-    private void poner() {
-        try {
 
-            this.jmi_cerrarSesion.setVisible(true);
-            this.jmi_cerrarSesion.setEnabled(true);
-
-            //////////////////////////////////////////
-            //Candidato
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
     private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
         // TODO add your handling code here:
+
+        this.jmi_cerrarSesion.setVisible(true);
 
 
     }//GEN-LAST:event_boton_loginActionPerformed
@@ -2490,8 +2456,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         usuario_loggeado = null;
         usuario_loggeadoC = null;
         JOptionPane.showMessageDialog(this, "Usted ha cerrado Sesion, bai");
-        jd_login.setEnabled(true);
-        jd_login.setVisible(true);
+
         jmi_login.setVisible(true);
         jmi_registrarse.setVisible(true);
         jmi_cerrarSesion.setVisible(false);
@@ -2687,7 +2652,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 && romeo == Integer.parseInt(tf_romeo.getText()) && marlene == Integer.parseInt(tf_marlene.getText())
                 && isaias == Integer.parseInt(tf_isaias.getText()) && alfonso == Integer.parseInt(tf_alfonso.getText())
                 && salvador == Integer.parseInt(tf_nasry.getText()) && joh == Integer.parseInt(tf_joh.getText())) {
-
+            usuario_loggeado.setArchivo("./"+usuario_loggeado.getNombre()+".txt");
         }
 
 
@@ -2695,14 +2660,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         admin.setListaUsuarios(lista);
         admin.escribirArchivo();
-        System.out.println("ok");
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -2969,5 +2933,5 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     //adminUsuario au;
     Mensaje mensajeC = new Mensaje();
-   
+
 }
