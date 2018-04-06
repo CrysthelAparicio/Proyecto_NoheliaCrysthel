@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Mensaje implements Serializable{
-    private static final long SerialVersionUID=777L;
+    private static final long SerialVersionUID=888L;
     private Usuario emisor;//quien envia el mensaje
     private Usuario receptor;// el que lo reccibe
     private String asunto;

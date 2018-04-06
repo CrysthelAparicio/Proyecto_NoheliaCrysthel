@@ -4,9 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Date;
 
-public class UsuarioComun extends Usuario {
+public class UsuarioComun extends Usuario implements Serializable{
 
     private String direccion;
     private File archivo = null;
@@ -14,6 +15,7 @@ public class UsuarioComun extends Usuario {
     private Lista listaCandidatos = new Lista();
     private Lista mensajes_recibidos = new Lista();
     private Lista mensajes_enviados = new Lista();
+    private static final long SerialVersionUID =888L;
 
     public UsuarioComun() {
     }

@@ -169,7 +169,6 @@ public class AdminUsuarios {
 
     }
      */
-    
     //mutador extra
     public void setUsuarios(Usuario u) {
         listaUsuarios.agregarAlFinal(u);
@@ -184,6 +183,8 @@ public class AdminUsuarios {
                         = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
+                    
+
                     while ((temp = (Usuario) objeto.readObject()) != null) {
                         listaUsuarios.agregarAlFinal(temp);
                     }
@@ -192,6 +193,7 @@ public class AdminUsuarios {
                 }
                 objeto.close();
                 entrada.close();
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -209,11 +211,13 @@ public class AdminUsuarios {
             for (int i = 0; i < listaUsuarios.getTamanio(); i++) {
                 bw.writeObject(listaUsuarios.getValor(i));
             }
+
             //////////
 //            for (Usuario u : listaUsuarios) {
 //                bw.writeObject(u);
 //
 //            }
+
             bw.flush();
 
         } catch (Exception ex) {

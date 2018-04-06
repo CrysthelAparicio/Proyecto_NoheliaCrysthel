@@ -5,11 +5,14 @@
  */
 package ProyectoFinal;
 
+import java.io.Serializable;
+
 /**
  *
  * @author euced
  */
-public class Nodo {
+public class Nodo implements Serializable{
+    private static final long SerialVersionUID =888L;
     // Variable en la cual se va a guardar el valor.
     private Object valor;
     // Variable para enlazar los nodos.
