@@ -1,8 +1,10 @@
 package ProyectoFinal;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UsuarioCandidato extends Usuario {
+public class UsuarioCandidato extends Usuario implements Serializable{
+    private static final long SerialVersionUID =888L;
     private Lista listaCertificaciones = new Lista();
     private Lista listaPublicaciones = new Lista();
     private Lista listaSeguidores = new Lista();

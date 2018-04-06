@@ -3,8 +3,9 @@ package ProyectoFinal;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Usuario {
+public class Usuario implements Serializable{
 
+    private static final long SerialVersionUID=888L;
     private String nombre;
     private String apelido;
     private Date fecha_nacimiento;
