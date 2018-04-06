@@ -1,6 +1,8 @@
 package ProyectoFinal;
 
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -33,6 +35,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Red Elecciones");
+        jt_home.setVisible(false);
         try {
             admin.cargarArchivo();
             lista = admin.getListaUsuarios();
@@ -44,10 +47,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jmi_cerrarSesion.setVisible(false);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 
-        /*setIconImage(new ImageIcon(getClass().getResource("./imagenes/red.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("./imagenes/red.png")).getImage());
         ((JPanel) getContentPane()).setOpaque(false);
-        ImageIcon uno = new ImageIcon(this.getClass().getResource("./imagenes/fondo.jpg"));
-        JLabel fondo = new JLabel();
+        setContentPane(new JLabel(new ImageIcon("./fondo.jpg")));
+//        ImageIcon uno = new ImageIcon(this.getClass().getResource("./fondo.jpg"));
+        /*File archivo = new File("./fondo.jpg");
+        Image img = Toolkit.getDefaultToolkit().createImage(archivo.getPath()).getScaledInstance(100, 100, 100);
+        jl_fondo.setIcon(new ImageIcon(img));
+        /*
         fondo.setIcon(uno);
         getLayeredPane().add(fondo, JLayeredPane.FRAME_CONTENT_LAYER);
         fondo.setBounds(0, 0, uno.getIconWidth(), uno.getIconHeight());*/
@@ -144,7 +151,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         boton_login = new javax.swing.JButton();
         ps_password_login = new javax.swing.JPasswordField();
         jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
         tf_usuario_login = new javax.swing.JTextField();
         jd_signup = new javax.swing.JDialog();
         rb_m = new javax.swing.JRadioButton();
@@ -195,6 +201,10 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jd_homecandidato = new javax.swing.JDialog();
         tab_principal1 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        ta_publicacion = new javax.swing.JTextArea();
+        jLabel81 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
@@ -278,12 +288,13 @@ public class Principal_Ventana extends javax.swing.JFrame {
         editorpane_send = new javax.swing.JEditorPane();
         menu_responder = new javax.swing.JPopupMenu();
         Responder = new javax.swing.JMenuItem();
+        jl_fondo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jt_abrir = new javax.swing.JMenu();
         jmi_login = new javax.swing.JMenuItem();
         jmi_registrarse = new javax.swing.JMenuItem();
         jmi_cerrarSesion = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jt_home = new javax.swing.JMenu();
 
         tab_principal.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         tab_principal.setToolTipText("");
@@ -299,7 +310,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
         jLabel24.setText("Numero de Acta");
 
-        js_numeroActa.setModel(new javax.swing.SpinnerNumberModel(0, null, 99, 1));
+        js_numeroActa.setModel(new javax.swing.SpinnerNumberModel(0, 0, 99, 1));
 
         ta_acta.setColumns(20);
         ta_acta.setRows(5);
@@ -696,6 +707,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jLabel48.setText("Publicaciones Candidatos");
 
         cb_LPubliCandidatos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cb_LPubliCandidatos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_LPubliCandidatosItemStateChanged(evt);
+            }
+        });
 
         ta_PubliCandidatos.setColumns(20);
         ta_PubliCandidatos.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
@@ -995,9 +1011,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel41.setText("CONTRASEÑA");
 
-        jLabel42.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel42.setText("@elecciones.com");
-
         tf_usuario_login.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jd_loginLayout = new javax.swing.GroupLayout(jd_login.getContentPane());
@@ -1007,21 +1020,21 @@ public class Principal_Ventana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_loginLayout.createSequentialGroup()
                 .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jd_loginLayout.createSequentialGroup()
-                        .addComponent(jLabel41)
-                        .addGap(22, 22, 22)
-                        .addComponent(ps_password_login, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_loginLayout.createSequentialGroup()
-                        .addComponent(jLabel40)
-                        .addGap(31, 31, 31)
-                        .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(162, 162, 162))
+                    .addComponent(jLabel40)
+                    .addComponent(jLabel41))
+                .addGap(52, 52, 52)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ps_password_login, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(132, 132, 132))
             .addGroup(jd_loginLayout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel1))
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_loginLayout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(jLabel1))
+                    .addGroup(jd_loginLayout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(boton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jd_loginLayout.setVerticalGroup(
@@ -1029,19 +1042,17 @@ public class Principal_Ventana extends javax.swing.JFrame {
             .addGroup(jd_loginLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel42)
-                .addGap(12, 12, 12)
-                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(45, 45, 45)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
                     .addComponent(tf_usuario_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
-                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(79, 79, 79)
+                .addGroup(jd_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel41)
                     .addComponent(ps_password_login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(boton_login)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         bg_genero.add(rb_m);
@@ -1432,15 +1443,48 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
+        ta_publicacion.setColumns(20);
+        ta_publicacion.setRows(5);
+        jScrollPane5.setViewportView(ta_publicacion);
+
+        jLabel81.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel81.setText("Publicar");
+
+        jButton2.setText("Publicar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 818, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel81)
+                        .addGap(384, 384, 384))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(172, 172, 172))))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 157, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel81)
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addComponent(jButton2)
+                .addContainerGap(250, Short.MAX_VALUE))
         );
 
         tab_principal1.addTab("Publicaciones", jPanel10);
@@ -1518,7 +1562,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addComponent(lbFechaPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbGeneroPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbUsuarioPerfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(158, 324, Short.MAX_VALUE))
+                .addGap(158, 321, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1559,7 +1603,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addComponent(jLabel31)
                     .addComponent(lbUsuarioPerfil1))
                 .addGap(128, 128, 128)
-                .addComponent(boton_modificarCP, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(boton_modificarCP, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                 .addGap(44, 44, 44))
         );
 
@@ -1690,7 +1734,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addComponent(jProgressBar9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         tab_principal1.addTab("Estadísticas", jPanel8);
@@ -1908,7 +1952,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
                     .addComponent(jLabel54)
                     .addComponent(tf_correoCandidato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel51))
-                .addGap(30, 30, 30)
+                .addGap(23, 23, 23)
                 .addGroup(jd_modifcarCandidatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel55)
                     .addComponent(rb_m2)
@@ -2040,6 +2084,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
         });
 
+        jl_fondo.setText(" ");
+
         jt_abrir.setText("Abrir");
         jt_abrir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -2088,13 +2134,18 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
         jMenuBar1.add(jt_abrir);
 
-        jMenu2.setText("Edit");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+        jt_home.setText("Home");
+        jt_home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_homeMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jt_home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_homeActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jt_home);
 
         setJMenuBar(jMenuBar1);
 
@@ -2102,11 +2153,11 @@ public class Principal_Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
+            .addComponent(jl_fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+            .addComponent(jl_fondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
         );
 
         getAccessibleContext().setAccessibleName("frame");
@@ -2135,14 +2186,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
             }
 
         } else if (tab_principal.getSelectedIndex() == 5) {
-            if (usuario_loggeadoC != null) {
-                this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
-                this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
-                this.lbFechaPerfil1.setText(usuario_loggeadoC.getFecha_nacimiento().toString());
-                this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
-                this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
-                this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
-            } else if (usuario_loggeado != null) {
+            if (usuario_loggeado != null) {
                 this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
                 this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
                 this.lbFechaPerfil.setText(usuario_loggeado.getFecha_nacimiento().toString());
@@ -2152,7 +2196,20 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
 
             }
+        } else if (tab_principal.getSelectedIndex() == 2) {
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_LPubliCandidatos.getModel();
+            modelo.removeAllElements();
+            try {
+                for (int i = 0; i < usuario_loggeado.getListaCandidatos().getTamanio(); i++) {
+                    modelo.addElement(((UsuarioCandidato) usuario_loggeado.getListaCandidatos().getValor(i)));
+                }
+
+                cb_LPubliCandidatos.setModel(modelo);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
 
     }//GEN-LAST:event_tab_principalStateChanged
 
@@ -2281,6 +2338,23 @@ public class Principal_Ventana extends javax.swing.JFrame {
             tf_correo1.setText("");
             tf_usuario1.setText("");
             ps_contraseña1.setText("");
+            if (usuario_loggeadoC != null) {
+                this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+                this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
+                this.lbFechaPerfil1.setText(usuario_loggeadoC.getFecha_nacimiento().toString());
+                this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+                this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+                this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
+            } else if (usuario_loggeado != null) {
+                this.lbNombrePerfil.setText(usuario_loggeado.getNombre());
+                this.lbApellidoPerfil.setText(usuario_loggeado.getApelido());
+                this.lbFechaPerfil.setText(usuario_loggeado.getFecha_nacimiento().toString());
+                this.lbDireccionPerfil.setText(usuario_loggeado.getDireccion());
+                this.lbGeneroPerfil.setText(usuario_loggeado.getSexo());
+                this.lbUsuarioPerfil.setText(usuario_loggeado.getUsuario());
+                this.lbCorreoPerfil.setText(usuario_loggeado.getCorreo());
+
+            }
 
             JOptionPane.showMessageDialog(this, "Modificacion Exitosa");
         } catch (Exception e) {
@@ -2299,14 +2373,15 @@ public class Principal_Ventana extends javax.swing.JFrame {
             if (evt.getStateChange() == 1) {
                 if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
                     DefaultTableModel modelo = new DefaultTableModel();
-                    modelo.addColumn("Receptor");
-                    modelo.addColumn("Emisor");
+
+                    modelo.addColumn("De");
                     modelo.addColumn("Asunto");
+                    modelo.addColumn("Mensaje");
                     modelo.addColumn("Fecha");
                     for (int i = 0; i < usuario_loggeado.getRecibidos().getTamanio(); i++) {
                         Mensaje m = (Mensaje) usuario_loggeado.getRecibidos().getValor(i);
                         Object[] newrow = {
-                            m.getReceptor(), m.getEmisor(), m.getAsunto(), m.getFecha()
+                            m.getEmisor(), m.getAsunto(), m.getDescripcion(), m.getFecha()
 
                         };
                         modelo.addRow(newrow);
@@ -2316,14 +2391,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
                 } else if (cb_opcion_correo.getSelectedItem().toString().equals("Enviados")) {
                     DefaultTableModel modelo = new DefaultTableModel();
-                    modelo.addColumn("Receptor");
-                    modelo.addColumn("Emisor");
+                    modelo.addColumn("Para");
                     modelo.addColumn("Asunto");
+                    modelo.addColumn("Mensaje");
                     modelo.addColumn("Fecha");
                     for (int i = 0; i < usuario_loggeado.getEnviados().getTamanio(); i++) {
                         Mensaje m = (Mensaje) usuario_loggeado.getEnviados().getValor(i);
                         Object[] newrow = {
-                            m.getReceptor(), m.getEmisor(), m.getAsunto(), m.getFecha()
+                            m.getReceptor(), m.getAsunto(), m.getDescripcion(), m.getFecha()
                         };
                         modelo.addRow(newrow);
                     }
@@ -2371,7 +2446,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
             tf_asunto_send.setText("");
             editorpane.setText("");
             cb_paramensaje.setSelectedIndex(0);
-            usuario_loggeado.getEnviados().listar();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -2404,6 +2478,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void tab_principal2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal2StateChanged
         DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_paramensaje.getModel();
+
         if (tab_principal2.getSelectedIndex() == 1) {
             try {
                 modelo.removeAllElements();
@@ -2431,10 +2506,12 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         this.jd_homecandidato.pack();
                         this.jd_homecandidato.setLocationRelativeTo(this);
                         this.jd_homecandidato.setVisible(true);
-                        //this.menu_logout.setEnabled(true);
+                        this.jmi_login.setVisible(false);
+                        this.jmi_registrarse.setVisible(false);
 
                         tf_usuario_login.setText("");
                         ps_password_login.setText("");
+
                         break;
                     }
 
@@ -2448,6 +2525,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
                         this.jd_homecomun.pack();
                         this.jd_homecomun.setLocationRelativeTo(this);
                         this.jd_homecomun.setVisible(true);
+                        this.jmi_login.setVisible(false);
+                        this.jmi_registrarse.setVisible(false);
                         //this.menu_logout.setEnabled(true);
 
                         tf_usuario_login.setText("");
@@ -2467,14 +2546,28 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void boton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_loginActionPerformed
         // TODO add your handling code here:
+        if (usuario_loggeadoC != null) {
 
+        }
         this.jmi_cerrarSesion.setVisible(true);
+        jt_home.setVisible(true);
 
 
     }//GEN-LAST:event_boton_loginActionPerformed
 
     private void tab_principal1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab_principal1StateChanged
         // TODO add your handling code here:
+        if (tab_principal1.getSelectedIndex() == 1) {
+            if (usuario_loggeadoC != null) {
+                this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+                this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
+                this.lbFechaPerfil1.setText(usuario_loggeadoC.getFecha_nacimiento().toString());
+                this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+                this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+                this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
+
+            }
+        }
     }//GEN-LAST:event_tab_principal1StateChanged
 
     private void boton_modificarCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_modificarCPActionPerformed
@@ -2556,8 +2649,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
             int u = lista.getPosicion(usuario_loggeadoC);
             lista.editarPorPosicion(u, usuario_loggeadoC);
 
-            lista.listar();
-
             //  F A L T A
             tf_nombreCandidato.setText("");
             tf_apellidoCandidato.setText("");
@@ -2567,8 +2658,17 @@ public class Principal_Ventana extends javax.swing.JFrame {
             tf_correoCandidato.setText("");
             tf_usuarioCandidadto.setText("");
             ps_contraseñaCandidato.setText("");
+            if (usuario_loggeadoC != null) {
+                this.lbNombrePerfil1.setText(usuario_loggeadoC.getNombre());
+                this.lbApellidoPerfil1.setText(usuario_loggeadoC.getApelido());
+                this.lbFechaPerfil1.setText(usuario_loggeadoC.getFecha_nacimiento().toString());
+                this.lbGeneroPerfil1.setText(usuario_loggeadoC.getSexo());
+                this.lbUsuarioPerfil1.setText(usuario_loggeadoC.getUsuario());
+                this.lbCorreoPerfil1.setText(usuario_loggeadoC.getCorreo());
+            }
 
             JOptionPane.showMessageDialog(this, "Modificacion Exitosa");
+            jd_modifcarCandidato.setVisible(false);
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un Error");
@@ -2577,10 +2677,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     private void boton_modificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_modificar1ActionPerformed
         // TODO add your handling code here:
-        this.jd_modificarPerfil.setModal(true);
-        this.jd_modificarPerfil.pack();
-        this.jd_modificarPerfil.setLocationRelativeTo(this);
-        this.jd_modificarPerfil.setVisible(true);
+
     }//GEN-LAST:event_boton_modificar1ActionPerformed
 
     private void rb_comunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_comunActionPerformed
@@ -2617,9 +2714,20 @@ public class Principal_Ventana extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jt_abrirActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void jt_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_homeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu2ActionPerformed
+        if (usuario_loggeado != null) {
+            this.jd_homecomun.setModal(true);
+            this.jd_homecomun.pack();
+            this.jd_homecomun.setLocationRelativeTo(this);
+            this.jd_homecomun.setVisible(true);
+        } else if (usuario_loggeadoC != null) {
+            this.jd_homecandidato.setModal(true);
+            this.jd_homecandidato.pack();
+            this.jd_homecandidato.setLocationRelativeTo(this);
+            this.jd_homecandidato.setVisible(true);
+        }
+    }//GEN-LAST:event_jt_homeActionPerformed
 
     private void jmi_cerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmi_cerrarSesionMouseClicked
         // TODO add your handling code here:
@@ -2635,8 +2743,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
         jmi_login.setVisible(true);
         jmi_registrarse.setVisible(true);
         jmi_cerrarSesion.setVisible(false);
+        jt_home.setVisible(false);
         try {
-            lista.listar();
             admin.setListaUsuarios(lista);
             //admin.escribirArchivo();
         } catch (Exception e) {
@@ -2683,14 +2791,14 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         usuario_loggeado.agregarAmigo(usuario_seleccionado);
+        JOptionPane.showMessageDialog(this, "Ha sido agregado exitosamente");
 
-        usuario_loggeado.getListaAmigos().listar();
     }//GEN-LAST:event_jmi_agregarActionPerformed
 
     private void jmi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarActionPerformed
         // TODO add your handling code here:
         usuario_loggeado.eliminarAmigo(usuario_seleccionado);
-        usuario_loggeado.getListaAmigos().listar();
+        JOptionPane.showMessageDialog(this, "Ha sido eliminado exitosamente");
     }//GEN-LAST:event_jmi_eliminarActionPerformed
 
     private void btn_cargarCandidatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cargarCandidatosMouseClicked
@@ -2698,6 +2806,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
         try {
 
             DefaultListModel modelo = (DefaultListModel) jl_candidatos.getModel();
+            modelo.removeAllElements();
             for (int i = 0; i < lista.getTamanio(); i++) {
                 if (lista.getValor(i) instanceof UsuarioCandidato) {
                     modelo.addElement(lista.getValor(i));
@@ -2713,8 +2822,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
         usuario_loggeado.agregarCandidato(candidato_seleccionado);
         candidato_seleccionado.agregarSeguidor(usuario_loggeado);
-        usuario_loggeado.getListaCandidatos().listar();
-        candidato_seleccionado.getListaSeguidores().listar();
+        JOptionPane.showMessageDialog(this, "Ha sido agregado exitosamente");
+
     }//GEN-LAST:event_jmi_agregarCActionPerformed
 
     private void jl_candidatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_candidatosMouseClicked
@@ -2738,7 +2847,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void jmi_eliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_eliminarCActionPerformed
         // TODO add your handling code here:
         usuario_loggeado.eliminarCandidato(candidato_seleccionado);
-        usuario_loggeado.getListaCandidatos().listar();
+        JOptionPane.showMessageDialog(this, "Ha sido agregado exitosamente");
+
     }//GEN-LAST:event_jmi_eliminarCActionPerformed
     /*
     private void cb_opcion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_opcion_correoActionPerformed
@@ -2776,7 +2886,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
         // TODO add your handling code here:
         if (evt.isMetaDown()) {
-            if (cb_paramensaje.getSelectedItem().toString().equals("Inbox")) {
+            if (cb_opcion_correo.getSelectedItem().toString().equals("Inbox")) {
                 menu_responder.show(evt.getComponent(), evt.getX(), evt.getY());
             }
         }
@@ -2790,46 +2900,93 @@ public class Principal_Ventana extends javax.swing.JFrame {
         // TODO add your handling code here:
         String departamento = (String) cb_depto.getSelectedItem();
         int acta = (Integer) js_numeroActa.getValue();
-
         AdminActas aa = new AdminActas("./Actas/" + departamento + "/" + acta + ".txt", ta_acta);
         aa.cargarArchivo();
+        String str = ta_acta.getText();
+        int alfonso = 0, salvador = 0, eliseo = 0, lucas = 0, luis = 0, romeo = 0, isaias = 0, marlene = 0, joh = 0;
+        String[] partes = str.split("\n");
+
+        for (String parte : partes) {
+            if (parte.equals("Lucas Aguilera ")) {
+                lucas++;
+            } else if (parte.equals("Luis Zelaya ")) {
+                luis++;
+            } else if (parte.equals("Elseo Vallecillo Reyes ")) {
+                eliseo++;
+            } else if (parte.equals("Romeo Vasquez Velasquez ")) {
+                romeo++;
+            } else if (parte.equals("Marlene Alvarenga ")) {
+                marlene++;
+            } else if (parte.equals("Isaias Foncesa ")) {
+                isaias++;
+            } else if (parte.equals("Jose Alfonso Diaz Narvaez ")) {
+                alfonso++;
+            } else if (parte.equals("Salvador Nasralla ")) {
+                salvador++;
+            } else if (parte.equals("Juan Orlando Hernandez ")) {
+                joh++;
+            }
+            
+        }
+        System.out.println(lucas + " " + luis + " " + eliseo + " " + romeo + " " + marlene + " " + isaias + " " + alfonso + " " + salvador + " " + joh);
+        //8 11 13 9 13 14 12 15 5
 
     }//GEN-LAST:event_btn_cargarActaMouseClicked
 
     private void btn_guardarActaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarActaMouseClicked
         // TODO add your handling code here:
+
         int alfonso = 0, salvador = 0, eliseo = 0, lucas = 0, luis = 0, romeo = 0, isaias = 0, marlene = 0, joh = 0;
         int cont = 0;
         String str = ta_acta.getText();
         String[] partes = str.split("\n");
         for (String parte : partes) {
-            if (parte.equals("Lucas Aguilera")) {
+            if (parte.equals("Lucas Aguilera ")) {
                 lucas++;
-            } else if (parte.equals("Luis Zelaya")) {
+            } else if (parte.equals("Luis Zelaya ")) {
                 luis++;
-            } else if (parte.equals("Elseo Vallecillo Reyes")) {
+            } else if (parte.equals("Elseo Vallecillo Reyes ")) {
                 eliseo++;
-            } else if (parte.equals("Romeo Vasquez Velasquez")) {
+            } else if (parte.equals("Romeo Vasquez Velasquez ")) {
                 romeo++;
-            } else if (parte.equals("Marlene Alvarenga")) {
+            } else if (parte.equals("Marlene Alvarenga ")) {
                 marlene++;
-            } else if (parte.equals("Isaias Foncesa")) {
+            } else if (parte.equals("Isaias Foncesa ")) {
                 isaias++;
-            } else if (parte.equals("Jose Alfonso Diaz Narvaez")) {
+            } else if (parte.equals("Jose Alfonso Diaz Narvaez ")) {
                 alfonso++;
-            } else if (parte.equals("Salvador Nasralla")) {
+            } else if (parte.equals("Salvador Nasralla ")) {
                 salvador++;
-            } else if (parte.equals("Juan Orlando Hernandez")) {
+            } else if (parte.equals("Juan Orlando Hernandez ")) {
                 joh++;
             }
         }
+
         if (lucas == Integer.parseInt(tf_lucas.getText()) && luis == Integer.parseInt(tf_luis.getText()) && eliseo == Integer.parseInt(tf_eliseo.getText())
                 && romeo == Integer.parseInt(tf_romeo.getText()) && marlene == Integer.parseInt(tf_marlene.getText())
                 && isaias == Integer.parseInt(tf_isaias.getText()) && alfonso == Integer.parseInt(tf_alfonso.getText())
                 && salvador == Integer.parseInt(tf_nasry.getText()) && joh == Integer.parseInt(tf_joh.getText())) {
-            usuario_loggeado.setArchivo("./" + usuario_loggeado.getNombre() + ".txt");
-        }
+            try {
+                String nmb = usuario_loggeado.getNombre();
+                usuario_loggeado.setArchivo("./Confirmadas/" + nmb + ".txt");
+                usuario_loggeado.escribirArchivo(cb_depto.getSelectedItem().toString() + " " + js_numeroActa.getValue(), true);
+            } catch (Exception e) {
+            }
 
+        }else{
+            System.out.println("no concuerdan los numeros");
+        }
+        tf_alfonso.setText("");
+        tf_eliseo.setText("");
+        tf_isaias.setText("");
+        tf_joh.setText("");
+        tf_lucas.setText("");
+        tf_luis.setText("");
+        tf_marlene.setText("");
+        tf_nasry.setText("");
+        tf_romeo.setText("");
+
+        JOptionPane.showMessageDialog(this, "Su respuesta ha sido enviada");
 
     }//GEN-LAST:event_btn_guardarActaMouseClicked
 
@@ -2882,30 +3039,73 @@ public class Principal_Ventana extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         jProgressBar1.setValue(lucas);
-        jLabel72.setText("Lucas Aguilera ("+((float)lucas/180000)*100+"%)");
+        jLabel72.setText("Lucas Aguilera (" + ((float) lucas / 180000) * 100 + "%)");
         jProgressBar2.setValue(luis);
-        jLabel73.setText("Luis Zelaya ("+((float)luis/180000)*100+"%)");
+        jLabel73.setText("Luis Zelaya (" + ((float) luis / 180000) * 100 + "%)");
         jProgressBar3.setValue(eliseo);
-        jLabel74.setText("Elseo Vallecillo Reyes ("+((float)eliseo/180000)*100+"%)");
+        jLabel74.setText("Elseo Vallecillo Reyes (" + ((float) eliseo / 180000) * 100 + "%)");
         jProgressBar4.setValue(romeo);
-        jLabel75.setText("Romeo Vasquez Velasquez ("+((float)romeo/180000)*100+"%)");
+        jLabel75.setText("Romeo Vasquez Velasquez (" + ((float) romeo / 180000) * 100 + "%)");
         jProgressBar5.setValue(marlene);
-        jLabel76.setText("Marlene Alvarenga ("+((float)marlene/180000)*100+"%)");
+        jLabel76.setText("Marlene Alvarenga (" + ((float) marlene / 180000) * 100 + "%)");
         jProgressBar6.setValue(isaias);
-        jLabel77.setText("Isaias Foncesa ("+((float)isaias/180000)*100+"%)");
+        jLabel77.setText("Isaias Foncesa (" + ((float) isaias / 180000) * 100 + "%)");
         jProgressBar7.setValue(alfonso);
-        jLabel78.setText("Jose Alfonso Diaz Narvaez ("+((float)alfonso/180000)*100+"%)");
+        jLabel78.setText("Jose Alfonso Diaz Narvaez (" + ((float) alfonso / 180000) * 100 + "%)");
         jProgressBar8.setValue(salvador);
-        jLabel79.setText("Salvador Nasralla ("+((float)salvador/180000)*100+"%)");
+        jLabel79.setText("Salvador Nasralla (" + ((float) salvador / 180000) * 100 + "%)");
         jProgressBar9.setValue(joh);
-        jLabel80.setText("Juan Orlando Hernandez ("+((float)joh/180000)*100+"%)");
+        jLabel80.setText("Juan Orlando Hernandez (" + ((float) joh / 180000) * 100 + "%)");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_cargarActaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cargarActaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_cargarActaActionPerformed
+
+    private void cb_LPubliCandidatosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_LPubliCandidatosItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == 2) {
+            UsuarioCandidato u;
+            u = (UsuarioCandidato) cb_LPubliCandidatos.getSelectedItem();
+            ta_PubliCandidatos.setText("");
+            String ss = "";
+            try {
+                for (int i = 0; i < u.getListaPublicaciones().getTamanio(); i++) {
+                    ss = ss.concat(((Publicacion) u.getListaPublicaciones().getValor(i)).getTexto() + "\n");
+
+                }
+                ta_PubliCandidatos.setText(ss);
+            } catch (Exception e) {
+            }
+
+        }
+    }//GEN-LAST:event_cb_LPubliCandidatosItemStateChanged
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        String ss;
+        ss = ta_publicacion.getText();
+        Publicacion p = new Publicacion(ss, new Date());
+        usuario_loggeadoC.getListaPublicaciones().agregarAlFinal(p);
+        ta_publicacion.setText("");
+        JOptionPane.showMessageDialog(this, "Se ha publicado exitosamente");
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jt_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_homeMouseClicked
+        if (usuario_loggeado != null) {
+            this.jd_homecomun.setModal(true);
+            this.jd_homecomun.pack();
+            this.jd_homecomun.setLocationRelativeTo(this);
+            this.jd_homecomun.setVisible(true);
+        } else if (usuario_loggeadoC != null) {
+            this.jd_homecandidato.setModal(true);
+            this.jd_homecandidato.pack();
+            this.jd_homecandidato.setLocationRelativeTo(this);
+            this.jd_homecandidato.setVisible(true);
+        }
+    }//GEN-LAST:event_jt_homeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -2974,6 +3174,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JEditorPane editorpane_send;
     private javax.swing.JButton enviar_send;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3010,7 +3211,6 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
@@ -3053,8 +3253,8 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -3081,6 +3281,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JDialog jd_escoger;
@@ -3093,6 +3294,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JDialog jd_signup;
     private javax.swing.JList<String> jl_candidatos;
     private javax.swing.JLabel jl_direccion;
+    private javax.swing.JLabel jl_fondo;
     private javax.swing.JList<String> jl_usuariosComunes;
     private javax.swing.JMenuItem jmi_agregar;
     private javax.swing.JMenuItem jmi_agregarC;
@@ -3103,6 +3305,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_registrarse;
     private javax.swing.JSpinner js_numeroActa;
     private javax.swing.JMenu jt_abrir;
+    private javax.swing.JMenu jt_home;
     private javax.swing.JLabel lbApellidoPerfil;
     private javax.swing.JLabel lbApellidoPerfil1;
     private javax.swing.JLabel lbContraPerfil;
@@ -3143,6 +3346,7 @@ public class Principal_Ventana extends javax.swing.JFrame {
     private javax.swing.JTextField t_direccion;
     private javax.swing.JTextArea ta_PubliCandidatos;
     private javax.swing.JTextArea ta_acta;
+    private javax.swing.JTextArea ta_publicacion;
     private javax.swing.JTabbedPane tab_principal;
     private javax.swing.JTabbedPane tab_principal1;
     private javax.swing.JTabbedPane tab_principal2;

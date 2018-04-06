@@ -85,7 +85,7 @@ public class Usuario implements Serializable{
 
     @Override
     public String toString() {
-        return  usuario ;
+        return  nombre +" "+ apelido ;
     }
 
     

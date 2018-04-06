@@ -115,20 +115,14 @@ public class UsuarioComun extends Usuario implements Serializable{
     }
     
 
-    /*public void escribirArchivo() throws IOException {
+    public void escribirArchivo(String acta, boolean confirmada) throws IOException {
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
             fw = new FileWriter(archivo, true);
             bw = new BufferedWriter(fw);
 
-            bw.write(this.getNombre() + " " + this.getApelido());
-            bw.write(" " + this.getFecha_nacimiento());
-            bw.write(" " + this.getSexo());
-            bw.write(" " + this.getUsuario());
-            bw.write(" " + this.getContraseña());
-            bw.write(" " + this.getCorreo());
-            bw.write(" " + this.getDireccion());
+            bw.write(acta + " " + confirmada);
             
             bw.write("\n");
             bw.flush();
@@ -137,6 +131,6 @@ public class UsuarioComun extends Usuario implements Serializable{
         }
         bw.close();
         fw.close();
-    }*/
+    }
 
 }
